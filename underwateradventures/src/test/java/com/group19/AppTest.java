@@ -1,4 +1,4 @@
-package com.gropu19;
+package com.group19;
 
 import org.junit.jupiter.api.Test;
 
