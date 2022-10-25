@@ -1,8 +1,6 @@
 package com.group19;
 
-import org.junit.jupiter.api.Test;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import test.java.com.group19.gameBoard;
 
 import javax.swing.JFrame;
 
@@ -10,17 +8,14 @@ import javax.swing.JFrame;
  * Unit test for simple App.
  */
 class AppTest {
-    /**
-     * Rigorous Test.
-     */
-    @Test
-    void testApp() {
-        assertEquals(1, 1);
-    }
 
     public static void main(String[]args){
         JFrame window = new JFrame();
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gameBoard game = new gameBoard();
+        window.add(game);
+        window.setTitle("Underwater Adventure");
+
         window.setVisible(true);
     }
 }
