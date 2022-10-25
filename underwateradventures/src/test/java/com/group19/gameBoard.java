@@ -1,9 +1,14 @@
 package test.java.com.group19;
 
 import javax.swing.*;
+import javax.imageio.*;
 
 import java.awt.Color;
-import java.awt.Dimension;
+import java.io.IOException;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+
+
 
 
 public class gameBoard extends JPanel{
@@ -23,10 +28,15 @@ public class gameBoard extends JPanel{
     //GameBoard constructor 
     public gameBoard(){
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
-        GameBoardBckgd = new ImageIcon(this.getClass.getResource("project/Resources/Images/GameBoard"));
-        GameBoardBckgdLabel = new JLabel(GameBoardBckgd);
-        GameBoardBckgdLabel.setSize(boardDim);
-
+        BufferedImage img;
+        try {
+            img = ImageIO.read(getClass().getResource("/GameBoardBckgd.png"));
+            GameBoardBckgd = new ImageIcon(img);
+            GameBoardBckgdLabel = new JLabel(GameBoardBckgd);
+            GameBoardBckgdLabel.setSize(boardDim);
+          } catch (IOException ex) {
+            System.err.println("Could not load image");
+          }
 
         this.setPreferredSize(boardDim);
         this.setBackground(Color.BLUE);
