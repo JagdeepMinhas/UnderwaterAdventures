@@ -1,6 +1,6 @@
 package test.java.com.group19;
 
-import javax.swing.JPanel;
+import javax.swing.*;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -17,9 +17,18 @@ public class gameBoard extends JPanel{
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
+    private ImageIcon GameBoardBckgd;
+    private JLabel GameBoardBckgdLabel;
+
     //GameBoard constructor 
     public gameBoard(){
-        this.setPreferredSize( new Dimension(screenWidth, screenHeight));
+        Dimension boardDim = new Dimension(screenWidth, screenHeight);
+        GameBoardBckgd = new ImageIcon(this.getClass.getResource("project/Resources/Images/GameBoard"));
+        GameBoardBckgdLabel = new JLabel(GameBoardBckgd);
+        GameBoardBckgdLabel.setSize(boardDim);
+
+
+        this.setPreferredSize(boardDim);
         this.setBackground(Color.BLUE);
     }
 
