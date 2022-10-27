@@ -35,8 +35,8 @@ public class GameBoard extends JPanel{
     // Paint componenet method
     public void paintComponent(Graphics g){
       super.paintComponent(g);
-      Image dimg = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
-      g.drawImage(dimg,0,0,null);
+      Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
+      g.drawImage(backgroundImage,0,0,null);
       Graphics2D g2 = (Graphics2D) g;
       Turtle turtle= new Turtle(0,0);
       turtle.draw(g2);
