@@ -1,19 +1,13 @@
 package com.group19;
-
 import javax.swing.*;
+import com.Entity.Turtle;
 import javax.imageio.*;
-
-import java.awt.Color;
 import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-
-
-
 public class GameBoard extends JPanel{
-    
     //cell size in characters (arbitrary)
     final int cellSize = 40;
     
@@ -23,25 +17,35 @@ public class GameBoard extends JPanel{
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
-    private ImageIcon GameBoardBckgd;
-    private JLabel GameBoardBckgdLabel;
 
     //GameBoard constructor 
+    BufferedImage myPicture =null;
     public GameBoard(){
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
-        BufferedImage img;
+        this.setPreferredSize(boardDim);
+ 
         try {
-            BufferedImage myPicture = ImageIO.read(new File("Resources/Images/GameBoard/GameBoardBckgd.png"));
-            JLabel picLabel = new JLabel(new ImageIcon(myPicture)); 
-            add(picLabel);
-            //GameBoardBckgdLabel.setSize(boardDim);
+           myPicture = ImageIO.read(new File("Resources/Images/GameBoard/GameBoardBckgd.png"));
           } catch (IOException ex) {
             System.err.println("Could not load image");
           }
-        
-        this.setPreferredSize(boardDim);
-        this.setBackground(Color.BLUE);
+           
     }
+
+    // Paint componenet method
+    public void paintComponent(Graphics g){
+      super.paintComponent(g);
+      Image dimg = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
+      g.drawImage(dimg,0,0,null);
+      Graphics2D g2 = (Graphics2D) g;
+      Turtle turtle= new Turtle(0,0);
+      turtle.draw(g2);
+      
+      }
+    
+
+
+    
 
 
 

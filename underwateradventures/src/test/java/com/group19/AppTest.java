@@ -13,7 +13,8 @@ class AppTest {
         GameBoard game = new GameBoard();
         window.add(game);
         window.setTitle("Underwater Adventure");
-
+        window.pack();
+        
         window.setVisible(true);
     }
 }
