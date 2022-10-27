@@ -1,6 +1,8 @@
 package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
+import com.Entity.Shark;
+import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
@@ -41,7 +43,16 @@ public class GameBoard extends JPanel{
       Turtle turtle= new Turtle(0,0);
       turtle.draw(g2);
       
-      }
+      Shark shark1 = new Shark();
+      shark1.draw(g2);
+
+      Shark shark2 = new Shark(100,200);
+      shark2.draw(g2);
+      
+      Scubadiver scuba = new Scubadiver();
+      scuba.draw(g2);
+    
+    }
     
 
 
