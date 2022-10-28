@@ -7,7 +7,7 @@ import javax.imageio.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
+import java.net.URL;
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
