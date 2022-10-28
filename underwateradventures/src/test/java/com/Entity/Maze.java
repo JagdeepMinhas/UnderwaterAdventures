@@ -14,7 +14,9 @@ public class Maze extends Entity  {
 
     int tempX;
     int tempY;
-    boolean [][] barrier;
+    int [][] barriers;
+
+
 
 
     public Maze(Graphics2D g){
@@ -38,7 +40,7 @@ public class Maze extends Entity  {
 
     void setPerimeter(Graphics2D g){
 
-        for(int i =0; i < 600;i+=entitySize){
+        for(int i =0; i < 800;i+=entitySize){
             tempX = i;
             tempY = 0;
             drawRock(g);
