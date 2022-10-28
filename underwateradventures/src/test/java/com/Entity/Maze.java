@@ -6,6 +6,7 @@ import javax.imageio.*;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
@@ -14,7 +15,7 @@ public class Maze extends Entity  {
 
     int tempX;
     int tempY;
-    int [][] barriers;
+    char [][] barriers;
 
 
 
@@ -22,7 +23,12 @@ public class Maze extends Entity  {
     public Maze(Graphics2D g){
         this.setxPosition(0);
         this.setyPosition(0);
-        setPerimeter(g);
+        try {
+            setPerimeter(g);
+        } catch (IOException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
     }
 
     void drawRock(Graphics2D g){
@@ -38,13 +44,26 @@ public class Maze extends Entity  {
 
     }
 
-    void setPerimeter(Graphics2D g){
+    void setPerimeter(Graphics2D g) throws IOException{
 
-        for(int i =0; i < 800;i+=entitySize){
-            tempX = i;
-            tempY = 0;
-            drawRock(g);
-        }
+        //for(int i =0; i < 800;i+=entitySize){
+        //    tempX = i;
+        //    tempY = 0;
+        //    drawRock(g);
+        //}
+
+        File file = new File("Resources/MapGrid.txt");
+        Scanner reader = new Scanner(file);
+        String row;
+        System.out.println("file opened; success!");
+        for (int i = 0; i < 20; i++) {
+            row = reader.nextLine();
+            for (int j = 0; j < 20; j++) {
+              this.barriers[i][j] = row.charAt(j);
+            }
+          }
+          reader.close();
+        
 
 
     }
