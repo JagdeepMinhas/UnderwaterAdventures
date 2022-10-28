@@ -9,7 +9,7 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class GameBoard extends JPanel{
+ class GameBoard extends JPanel{
     //cell size in characters (arbitrary)
     final int cellSize = 40;
     
