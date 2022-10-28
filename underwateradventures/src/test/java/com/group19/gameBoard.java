@@ -3,6 +3,7 @@ import javax.swing.*;
 import com.Entity.Turtle;
 import com.Entity.Shark;
 import com.Entity.Scubadiver;
+import com.Entity.Maze;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
@@ -40,7 +41,7 @@ import java.awt.image.BufferedImage;
       Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
       g.drawImage(backgroundImage,0,0,null);
       Graphics2D g2 = (Graphics2D) g;
-      Turtle turtle= new Turtle(0,0);
+      Turtle turtle= new Turtle();
       turtle.draw(g2);
       
       Shark shark1 = new Shark();
@@ -51,6 +52,8 @@ import java.awt.image.BufferedImage;
       
       Scubadiver scuba = new Scubadiver();
       scuba.draw(g2);
+
+      new Maze(g2);
     
     }
     
