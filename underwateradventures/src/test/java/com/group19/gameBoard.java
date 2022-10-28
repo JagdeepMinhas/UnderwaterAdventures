@@ -54,7 +54,6 @@ import java.awt.image.BufferedImage;
       scuba.draw(g2);
 
       new Maze(g2);
-    
     }
     
 
