@@ -2,15 +2,18 @@ package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
 import com.Entity.Shark;
-import com.Entity.Scubadiver;
 import com.Entity.Maze;
+import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import javax.swing.Timer;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-class GameBoard extends JPanel{
+public class GameBoard extends JPanel implements ActionListener{
     //cell size in characters (arbitrary)
     final int cellSize = 40;
     
@@ -20,6 +23,12 @@ class GameBoard extends JPanel{
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
+    // Gameloop Timer
+    Timer gameTimer;
+
+    // Shark Objects
+    Shark s1;
+    Shark s2;
 
     //GameBoard constructor 
     BufferedImage myPicture =null;
@@ -32,6 +41,12 @@ class GameBoard extends JPanel{
           } catch (IOException ex) {
             System.err.println("Could not load image");
           }
+        
+          gameTimer = new Timer(10, this);
+          gameTimer.start();
+
+          s1 = new Shark();
+          s2 = new Shark(80,240);
            
     }
 
@@ -44,18 +59,24 @@ class GameBoard extends JPanel{
       Turtle turtle= new Turtle();
       turtle.draw(g2);
       
-      Shark shark1 = new Shark();
-      shark1.draw(g2);
-
-      Shark shark2 = new Shark(100,200);
-      shark2.draw(g2);
       
+      s1.draw(g2);
+      s2.draw(g2);
+
       Scubadiver scuba = new Scubadiver();
       scuba.draw(g2);
-
+      
       new Maze(g2);
     }
     
+    public void actionPerformed(ActionEvent e) {
+
+      repaint();
+
+      //Update Shark image
+      s1.update();
+      s2.update();
+    }
 
 
     

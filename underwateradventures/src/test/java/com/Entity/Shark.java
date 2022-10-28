@@ -9,11 +9,12 @@ import java.awt.image.BufferedImage;
 
 public class Shark extends Entity implements Movable {
 
-  
+    int speed = 40;
+
     public Shark(){
         super();
-        this.setxPosition(100);
-        this.setyPosition(100);
+        this.setxPosition(40);
+        this.setyPosition(80);
     }
 
     public Shark(int x, int y){
@@ -22,6 +23,17 @@ public class Shark extends Entity implements Movable {
         this.setyPosition(y);
     }
     
+    public void update() {
+        xPosition+=speed;
+        if (xPosition > 680) {
+            speed = -40;
+        }
+
+        if (xPosition < 80) {
+            speed = 40;
+        }
+
+    }
     
     @Override
     public void move() {
