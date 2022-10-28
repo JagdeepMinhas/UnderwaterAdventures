@@ -7,6 +7,7 @@ import javax.imageio.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -16,7 +17,7 @@ public class Maze extends Entity  {
 
     int tempX;
     int tempY;
-    char [][] barriers = new char [7][7];
+    char [][] barriers = new char [8][20];
 
 
 
@@ -48,17 +49,14 @@ public class Maze extends Entity  {
         try {
             sc = new Scanner(file);
            
-                for(int i=0; i <7; i++){
+                for(int i=0; i <8; i++){
                     row = sc.nextLine();
-                    for(int j=0; j< 7; j++){
+                    for(int j=0; j< 20; j++){
                         this.barriers[i][j] = row.charAt(j);
                     }
                 }
             sc.close();
 
-            System.out.println(barriers[0][0]);
-   
-       
         } catch (FileNotFoundException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
@@ -74,7 +72,21 @@ public class Maze extends Entity  {
            tempY = 0;
            drawRock(g);
         }*/
-          setBarriers();
+        setBarriers();
+
+            for(int i=0; i<8;i++){
+                for(int j=0; j<20;j++){
+                    if(barriers[i][j] == 'B'){
+                        tempX = j * entitySize;
+                        tempY = i * entitySize;
+                        drawRock(g);
+                    }
+                }
+                
+            }
+
+
+
         
 
         
