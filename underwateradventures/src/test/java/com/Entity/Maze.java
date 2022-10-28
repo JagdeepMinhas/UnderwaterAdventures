@@ -17,6 +17,9 @@ public class Maze extends Entity  {
 
     int tempX;
     int tempY;
+    //integers based on current MapGrid
+    static int maxRow =8;
+    static int maxCol = 20;
     char [][] barriers = new char [8][20];
 
 
@@ -49,9 +52,9 @@ public class Maze extends Entity  {
         try {
             sc = new Scanner(file);
            
-                for(int i=0; i <8; i++){
+                for(int i=0; i <maxRow; i++){
                     row = sc.nextLine();
-                    for(int j=0; j< 20; j++){
+                    for(int j=0; j< maxCol; j++){
                         this.barriers[i][j] = row.charAt(j);
                     }
                 }
@@ -74,8 +77,8 @@ public class Maze extends Entity  {
         }*/
         setBarriers();
 
-            for(int i=0; i<8;i++){
-                for(int j=0; j<20;j++){
+            for(int i=0; i<maxRow;i++){
+                for(int j=0; j<maxCol;j++){
                     if(barriers[i][j] == 'B'){
                         tempX = j * entitySize;
                         tempY = i * entitySize;
