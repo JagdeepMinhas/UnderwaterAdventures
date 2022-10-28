@@ -5,6 +5,7 @@ package com.Entity;
 import javax.imageio.*;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.Scanner;
 import java.awt.*;
@@ -42,11 +43,28 @@ public class Maze extends Entity  {
 
     void setPerimeter(Graphics2D g) {
 
-        for(int i =0; i < 800;i+=entitySize){
+        /*for(int i =0; i < 800;i+=entitySize){
            tempX = i;
            tempY = 0;
            drawRock(g);
+        }*/
+
+        File file = new File("C:/Users/hazel/project/Resources/MapGrid.txt");
+        Scanner sc;
+        try {
+            sc = new Scanner(file);
+            while(sc.hasNextLine()){
+                System.out.println(sc.nextLine());
+            }
+            sc.close();
+       
+        } catch (FileNotFoundException e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
         }
+          
+        
+
         
     }
 
