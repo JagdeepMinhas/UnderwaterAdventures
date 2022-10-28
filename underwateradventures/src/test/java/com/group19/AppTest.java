@@ -5,7 +5,7 @@ import javax.swing.JFrame;
 /**
  * Unit test for simple App.
  */
-class AppTest {
+public class AppTest {
 
     public static void main(String[]args){
         JFrame window = new JFrame();

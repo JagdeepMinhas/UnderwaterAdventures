@@ -12,8 +12,8 @@ import java.awt.image.BufferedImage;
 public class Turtle extends Entity implements Movable {
     public Turtle(){
         super();
-        this.setxPosition(0);   
-        this.setyPosition(0);
+        this.setxPosition(40);   
+        this.setyPosition(40);
     }
 
     public Turtle(int x, int y){
