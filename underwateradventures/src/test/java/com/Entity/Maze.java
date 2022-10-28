@@ -47,7 +47,7 @@ public class Maze extends Entity  {
 
     void setBarriers(){
         String row;
-        File file = new File("C:/Users/hazel/project/Resources/MapGrid.txt");
+        File file = new File("Resources/MapGrid.txt");
         Scanner sc;
         try {
             sc = new Scanner(file);
