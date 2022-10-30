@@ -1,19 +1,20 @@
 package com.Entity;
-
-
-
 import javax.imageio.*;
-
 import java.io.File;
 import java.io.IOException;
 import java.awt.*;
+
 import java.awt.image.BufferedImage;
 
-public class Turtle extends Entity implements Movable {
+public class Turtle extends Entity  {
+
+
+    int speed= entitySize; // turtle will move at most 4opx with every move
+  
     public Turtle(){
         super();
-        this.setxPosition(40);   
-        this.setyPosition(40);
+        this.setxPosition(entitySize);   
+        this.setyPosition(entitySize);
     }
 
     public Turtle(int x, int y){
@@ -23,11 +24,43 @@ public class Turtle extends Entity implements Movable {
     }
 
 
-    @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        
+
+   
+   public void moveUp() {
+       if (this.getyPosition()-speed<entitySize){
+           return;
+       }
+       else{
+           this.setyPosition(this.getyPosition()-speed);
+       }    
     }
+
+    public void moveDown() {
+        if (this.getyPosition()+speed>(screenHeight-entitySize)){
+            return;
+        }
+        else{
+            this.setyPosition(this.getyPosition()+speed);
+        }    
+     }
+
+     public void moveLeft() {
+        if (this.getxPosition()+speed<entitySize){
+            return;
+        }
+        else{
+            this.setxPosition(this.getxPosition()-speed);
+        }    
+     }
+     public void moveRight() {
+        if (this.getxPosition()+speed>(screenWidth-entitySize)){
+            return;
+        }
+        else{
+            this.setxPosition(this.getxPosition()+speed);
+        }    
+     }
+
     public void draw(Graphics2D g){
         BufferedImage pic = null;
         try {
@@ -36,8 +69,9 @@ public class Turtle extends Entity implements Movable {
            } catch (IOException ex) {
              System.err.println("Could not load image");
            }
-        g.drawImage(pic, this.getxPosition(), this.getyPosition(),40,40, null);
+        g.drawImage(pic, this.getxPosition(), this.getyPosition(),entitySize,entitySize, null);
 
     }
+
     
 }

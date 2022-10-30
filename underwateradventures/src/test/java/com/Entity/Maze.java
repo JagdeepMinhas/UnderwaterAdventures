@@ -7,7 +7,7 @@ import javax.imageio.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.net.URL;
+
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -61,7 +61,7 @@ public class Maze extends Entity  {
             sc.close();
 
         } catch (FileNotFoundException e) {
-            // TODO Auto-generated catch block
+           
             e.printStackTrace();
         }
 

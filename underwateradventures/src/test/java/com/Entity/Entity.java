@@ -3,8 +3,12 @@ package com.Entity;
 public abstract class Entity {
 
     final int entitySize = 40; // size of each entity
-    public int xPosition;       // made public because idk how to make update() work if its in private
-    public int yPosition;
+    final int maxCol = 25;
+    final int maxRow = 20;
+    final int screenWidth = maxCol * entitySize;
+    final int screenHeight = maxRow * entitySize;
+    private  int xPosition;       
+    private int yPosition;
 
     public int getyPosition() {
         return yPosition;

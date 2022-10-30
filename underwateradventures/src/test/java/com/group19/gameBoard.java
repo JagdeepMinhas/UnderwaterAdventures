@@ -2,6 +2,7 @@ package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
 import com.Entity.Shark;
+import com.Entity.KeyHandler;
 import com.Entity.Maze;
 import com.Entity.Scubadiver;
 import javax.imageio.*;
@@ -18,17 +19,21 @@ public class GameBoard extends JPanel implements ActionListener{
     final int cellSize = 40;
     
     // 50x50 gameBoard
-    final int maxCol = 50;
-    final int maxRow = 50;
+    final int maxCol = 25;
+    final int maxRow = 20;
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
     // Gameloop Timer
     Timer gameTimer;
 
+    KeyHandler key = new KeyHandler();
+
     // Shark Objects
     Shark s1;
     Shark s2;
+    Turtle turtle;
+    Scubadiver scuba ;
 
     //GameBoard constructor 
     BufferedImage myPicture =null;
@@ -41,12 +46,18 @@ public class GameBoard extends JPanel implements ActionListener{
           } catch (IOException ex) {
             System.err.println("Could not load image");
           }
-        
+         
+          this.addKeyListener(key);
+          this.setFocusable(true);
           gameTimer = new Timer(10, this);
           gameTimer.start();
+      
+         
+          turtle= new Turtle();
 
           s1 = new Shark();
           s2 = new Shark(80,240);
+          scuba = new Scubadiver();
            
     }
 
@@ -56,26 +67,40 @@ public class GameBoard extends JPanel implements ActionListener{
       Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
       g.drawImage(backgroundImage,0,0,null);
       Graphics2D g2 = (Graphics2D) g;
-      Turtle turtle= new Turtle();
+       
       turtle.draw(g2);
       
       
       s1.draw(g2);
       s2.draw(g2);
-
-      Scubadiver scuba = new Scubadiver();
       scuba.draw(g2);
       
       new Maze(g2);
     }
     
     public void actionPerformed(ActionEvent e) {
-
-      repaint();
-
+      
+       if (key.upPressed==true){
+            turtle.moveUp();
+        }
+    
+        if (key.downPressed==true){
+          turtle.moveDown();
+        }
+       
+        if (key.leftPressed==true){
+          turtle.moveLeft();
+        }
+        if (key.rightPressed==true){
+          turtle.moveRight();
+        }
+        
+  
       //Update Shark image
+      
       s1.update();
       s2.update();
+      repaint();
     }
 
 

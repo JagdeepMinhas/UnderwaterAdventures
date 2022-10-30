@@ -7,9 +7,9 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Shark extends Entity implements Movable {
+public class Shark extends Entity {
 
-    int speed = 40;
+    int speed = entitySize; //shark  moves at most 40 px with every move
 
     public Shark(){
         super();
@@ -23,22 +23,15 @@ public class Shark extends Entity implements Movable {
         this.setyPosition(y);
     }
     
-    public void update() {
-        xPosition+=speed;
-        if (xPosition > 680) {
+    public void update(){
+       this.setxPosition(this.getxPosition()+speed);
+        if (this.getxPosition() > 680) {
             speed = -40;
         }
 
-        if (xPosition < 80) {
+        if (this.getxPosition() < 80) {
             speed = 40;
         }
-
-    }
-    
-    @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        
     }
     
     public void draw(Graphics2D g){

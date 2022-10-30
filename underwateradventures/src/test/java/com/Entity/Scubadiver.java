@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class Scubadiver extends Entity implements Movable {
+public class Scubadiver extends Entity  {
     public Scubadiver(){
         super();
         this.setxPosition(200);
@@ -21,11 +21,8 @@ public class Scubadiver extends Entity implements Movable {
     }
     
     
-    @Override
-    public void move() {
-        // TODO Auto-generated method stub
-        
-    }
+   
+    
     
     public void draw(Graphics2D g){
         BufferedImage scubadiverPic = null;
