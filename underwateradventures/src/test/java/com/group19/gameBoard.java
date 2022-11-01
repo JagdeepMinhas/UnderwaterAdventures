@@ -34,6 +34,7 @@ public class GameBoard extends JPanel implements ActionListener{
     Shark s2;
     Turtle turtle;
     Scubadiver scuba ;
+    Maze gameMaze;
 
     //GameBoard constructor 
     BufferedImage myPicture =null;
@@ -58,6 +59,8 @@ public class GameBoard extends JPanel implements ActionListener{
           s1 = new Shark();
           s2 = new Shark(80,240);
           scuba = new Scubadiver();
+          gameMaze = new Maze();
+          
            
     }
 
@@ -74,12 +77,10 @@ public class GameBoard extends JPanel implements ActionListener{
       s1.draw(g2);
       s2.draw(g2);
       scuba.draw(g2);
-      
-      new Maze(g2);
+      gameMaze.draw(g2);
     }
     
     public void actionPerformed(ActionEvent e) {
-      
        if (key.upPressed==true){
             turtle.moveUp();
         }
