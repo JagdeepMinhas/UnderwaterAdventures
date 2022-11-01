@@ -2,10 +2,18 @@
 package com.Entity;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+
+import com.group19.GameBoard;
 public class KeyHandler implements KeyListener{
 
-    public boolean upPressed, downPressed,leftPressed, rightPressed;
-   
+    GameBoard gb;
+
+    public boolean upPressed, downPressed,leftPressed, rightPressed,keyEnter;
+    
+    public KeyHandler(GameBoard gb){
+        this.gb = gb;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
         
@@ -16,23 +24,37 @@ public class KeyHandler implements KeyListener{
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
 
-        if (keyCode == KeyEvent.VK_W){
-            upPressed= true;
+        if(gb.gameState == gb.titleState){
+
+            if(keyCode == KeyEvent.VK_ENTER){
+                gb.gameState = gb.playState;
+            }
         }
-        if (keyCode == KeyEvent.VK_S){
-            downPressed=true;
+        if(gb.gameState == gb.playState){
+
+            if (keyCode == KeyEvent.VK_W){
+                upPressed= true;
+            }
+            if (keyCode == KeyEvent.VK_S){
+                downPressed=true;
+            }
+            if (keyCode == KeyEvent.VK_A){
+                leftPressed=true;
+            }
+            if (keyCode == KeyEvent.VK_D){
+                rightPressed=true;
+            }
+
+            if(keyCode == KeyEvent.VK_ENTER){
+                keyEnter = true;
+            }
         }
-        if (keyCode == KeyEvent.VK_A){
-            leftPressed=true;
-        }
-        if (keyCode == KeyEvent.VK_D){
-            rightPressed=true;
-        }
-        
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
+
+       
         int keyCode = e.getKeyCode();
 
         if (keyCode == KeyEvent.VK_W){
@@ -44,11 +66,14 @@ public class KeyHandler implements KeyListener{
         if (keyCode == KeyEvent.VK_A){
             leftPressed=false;
         }
+
         if (keyCode == KeyEvent.VK_D){
             rightPressed=false;
         }
-        
-    }
 
-    
+        if (keyCode == KeyEvent.VK_ENTER){
+            keyEnter = false;
+        }
+    }
 }
+

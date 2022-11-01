@@ -29,7 +29,14 @@ public class GameBoard extends JPanel implements ActionListener{
     // Gameloop Timer
     Timer gameTimer;
 
-    KeyHandler key = new KeyHandler();
+    //Game State 
+    public int gameState; 
+    public final int titleState = 0;
+    public final int playState = 1; 
+    public final int pauseState = 2;
+
+    public UI ui = new UI(this);
+    KeyHandler key = new KeyHandler(this);
 
     // Shark Objects
     SharkController s;
@@ -65,19 +72,30 @@ public class GameBoard extends JPanel implements ActionListener{
            
     }
 
+    public void setupGame(){
+      gameState = titleState;
+    }
+
     // Paint componenet method
     public void paintComponent(Graphics g){
       super.paintComponent(g);
-      Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
-      g.drawImage(backgroundImage,0,0,null);
       Graphics2D g2 = (Graphics2D) g;
-       
-      turtle.draw(g2);
+
+      if(gameState == titleState){
+        ui.draw(g2);
+      }else{
       
-      
-      s.draw(g2); //Shark
-      sc.draw(g2);  //Scuba
-      gameMaze.draw(g2);
+        Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
+        g.drawImage(backgroundImage,0,0,null);
+        
+        
+        turtle.draw(g2);
+        
+        
+        s.draw(g2); //Shark
+        sc.draw(g2);  //Scuba
+        gameMaze.draw(g2);
+      }
     }
     
     public void actionPerformed(ActionEvent e) {
