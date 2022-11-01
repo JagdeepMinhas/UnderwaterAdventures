@@ -7,7 +7,6 @@ import javax.imageio.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.util.Arrays;
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -65,18 +64,12 @@ public class Maze extends Entity  {
            
             e.printStackTrace();
         }
-        //System.out.println(Arrays.deepToString(barriers));
 
     }
 
 
     public void draw(Graphics2D g) {
 
-        /*for(int i =0; i < 800;i+=entitySize){
-           tempX = i;
-           tempY = 0;
-           drawRock(g);
-        }*/
         setBarriers();
 
             for(int i=0; i<maxRow;i++){

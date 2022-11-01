@@ -8,7 +8,6 @@ import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.Timer;
@@ -83,10 +82,6 @@ public class GameBoard extends JPanel implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
        char [][] gameBarriers = gameMaze.getBarriers();
-       //System.out.println(Arrays.deepToString(gameBarriers));
-       //System.out.printf("Turtle current position: %d,%d ", turtle.getyPosition(),turtle.getxPosition());
-       System.out.println(gameBarriers[1][5]);
-       System.out.println();
 
        final int min = 0;
        //based on example board
@@ -128,7 +123,6 @@ public class GameBoard extends JPanel implements ActionListener{
         if (key.rightPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
           int nextHorizPos = turtle.getxPosition()/40 + 1;
-          System.out.println(nextVertPos);
 
             if(nextHorizPos < horizMax){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
