@@ -22,7 +22,7 @@ public class Maze extends Entity  {
     static int maxCol = 20;
     char [][] barriers = new char [8][20];
 
-    char [][] getBarriers(){
+    public char [][] getBarriers(){
         return barriers;
     }
 

@@ -81,8 +81,14 @@ public class GameBoard extends JPanel implements ActionListener{
     }
     
     public void actionPerformed(ActionEvent e) {
+       char [][] gameBarriers = gameMaze.getBarriers();
        if (key.upPressed==true){
-            turtle.moveUp();
+            int nextYPos = turtle.getyPosition()/40 + 1;
+            int nextXPos = turtle.getxPosition()/40;
+
+            if(gameBarriers[nextXPos][nextYPos] != 'B'){
+              turtle.moveUp();
+            }
         }
     
         if (key.downPressed==true){
