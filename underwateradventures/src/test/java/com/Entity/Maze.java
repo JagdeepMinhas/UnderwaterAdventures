@@ -7,7 +7,7 @@ import javax.imageio.*;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-
+import java.util.Arrays;
 import java.util.Scanner;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -65,6 +65,7 @@ public class Maze extends Entity  {
            
             e.printStackTrace();
         }
+        //System.out.println(Arrays.deepToString(barriers));
 
     }
 
@@ -79,7 +80,7 @@ public class Maze extends Entity  {
         setBarriers();
 
             for(int i=0; i<maxRow;i++){
-                for(int j=0; j<maxCol;j++){
+                for(int j=0; j<maxCol; j++){
                     if(barriers[i][j] == 'B'){
                         tempX = j * entitySize;
                         tempY = i * entitySize;

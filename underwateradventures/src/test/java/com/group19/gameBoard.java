@@ -8,6 +8,7 @@ import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.Timer;
@@ -82,24 +83,58 @@ public class GameBoard extends JPanel implements ActionListener{
     
     public void actionPerformed(ActionEvent e) {
        char [][] gameBarriers = gameMaze.getBarriers();
-       if (key.upPressed==true){
-            int nextYPos = turtle.getyPosition()/40 + 1;
-            int nextXPos = turtle.getxPosition()/40;
+       //System.out.println(Arrays.deepToString(gameBarriers));
+       //System.out.printf("Turtle current position: %d,%d ", turtle.getyPosition(),turtle.getxPosition());
+       System.out.println(gameBarriers[1][5]);
+       System.out.println();
 
-            if(gameBarriers[nextXPos][nextYPos] != 'B'){
-              turtle.moveUp();
-            }
+       final int min = 0;
+       //based on example board
+       final int horizMax = 20;
+       final int vertMax = 8;
+       
+
+       if (key.upPressed==true){
+            int nextVertPos = turtle.getyPosition()/40 - 1;
+            int nextHorizPos = turtle.getxPosition()/40;
+
+            if(nextVertPos > min){
+              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+                turtle.moveUp();
+              }
+          }
         }
     
         if (key.downPressed==true){
-          turtle.moveDown();
+
+          int nextVertPos= turtle.getyPosition()/40 + 1;
+          int nextHorizPos = turtle.getxPosition()/40;
+            if(nextVertPos < vertMax){
+              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+                turtle.moveDown();
+              }
+            }
         }
        
         if (key.leftPressed==true){
-          turtle.moveLeft();
+          int nextVertPos = turtle.getyPosition()/40;
+          int nextHorizPos = turtle.getxPosition()/40 - 1;
+            if(nextHorizPos > min){
+              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+                turtle.moveLeft();
+              }
+            }
         }
         if (key.rightPressed==true){
-          turtle.moveRight();
+          int nextVertPos = turtle.getyPosition()/40;
+          int nextHorizPos = turtle.getxPosition()/40 + 1;
+          System.out.println(nextVertPos);
+
+            if(nextHorizPos < horizMax){
+              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+                turtle.moveRight();
+              }
+            }
         }
         
   
