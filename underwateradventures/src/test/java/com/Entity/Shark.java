@@ -34,6 +34,10 @@ public class Shark extends Entity {
         }
     }
     
+    public Rectangle getBounds(){
+        return new Rectangle(this.getxPosition(), this.getyPosition(), 40, 40);
+    }
+
     public void draw(Graphics2D g){
         BufferedImage sharkPic = null;
         try {
@@ -44,7 +48,6 @@ public class Shark extends Entity {
             System.err.println("Could not load image");
            }
         g.drawImage(sharkPic, this.getxPosition(), this.getyPosition(), 40, 40, null);
-
     }
     
 }

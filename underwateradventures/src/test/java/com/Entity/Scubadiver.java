@@ -20,9 +20,13 @@ public class Scubadiver extends Entity  {
         this.setyPosition(y);
     }
     
-    
+    public Rectangle getBounds(){
+        return new Rectangle(this.getxPosition(), this.getyPosition(), 40, 40);
+    } 
    
-    
+    public void update(){
+        
+    }
     
     public void draw(Graphics2D g){
         BufferedImage scubadiverPic = null;

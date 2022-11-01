@@ -22,14 +22,14 @@ public class Maze extends Entity  {
     static int maxCol = 20;
     char [][] barriers = new char [8][20];
 
+    public char [][] getBarriers(){
+        return barriers;
+    }
 
 
-
-    public Maze(Graphics2D g) {
+    public Maze() {
         this.setxPosition(0);
         this.setyPosition(0);
-        setPerimeter(g);
-    
     }
 
     void drawRock(Graphics2D g){
@@ -68,13 +68,8 @@ public class Maze extends Entity  {
     }
 
 
-    void setPerimeter(Graphics2D g) {
+    public void draw(Graphics2D g) {
 
-        /*for(int i =0; i < 800;i+=entitySize){
-           tempX = i;
-           tempY = 0;
-           drawRock(g);
-        }*/
         setBarriers();
 
             for(int i=0; i<maxRow;i++){
