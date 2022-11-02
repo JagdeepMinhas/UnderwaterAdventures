@@ -29,7 +29,6 @@ public class Maze extends Entity  {
     public Maze() {
         this.setxPosition(0);
         this.setyPosition(0);
-
     }
 
     void drawRock(Graphics2D g){

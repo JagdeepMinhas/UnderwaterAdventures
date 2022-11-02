@@ -2,8 +2,10 @@ package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
 import com.Entity.Shark;
+import com.Entity.SharkController;
 import com.Entity.KeyHandler;
 import com.Entity.Maze;
+import com.Entity.ScubaController;
 import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
@@ -27,23 +29,29 @@ public class GameBoard extends JPanel implements ActionListener{
     // Gameloop Timer
     Timer gameTimer;
 
-    KeyHandler key = new KeyHandler();
+    //Game State 
+    public int gameState; 
+    public final int titleState = 0;
+    public final int playState = 1; 
+    public final int pauseState = 2;
+
+    public UI ui = new UI(this);
+    KeyHandler key = new KeyHandler(this);
 
     // Shark Objects
-    Shark s1;
-    Shark s2;
+    SharkController s;
+    ScubaController sc;
     Turtle turtle;
-    Scubadiver scuba ;
     Maze gameMaze;
 
     //GameBoard constructor 
     BufferedImage myPicture =null;
     public GameBoard(){
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
-        this.setPreferredSize(boardDim);
- 
-        try {
-           myPicture = ImageIO.read(new File("Resources/Images/GameBoard/GameBoardBckgd.png"));
+        this.setPreferredSize(boardDim);  
+
+        try{
+          myPicture = ImageIO.read(new File("Resources/Images/GameBoard/GameBoardBckgd.png"));
           } catch (IOException ex) {
             System.err.println("Could not load image");
           }
@@ -56,34 +64,43 @@ public class GameBoard extends JPanel implements ActionListener{
          
           turtle= new Turtle();
 
-          s1 = new Shark();
-          s2 = new Shark(80,240);
-          scuba = new Scubadiver();
-          gameMaze = new Maze();
+          s = new SharkController();
+          sc = new ScubaController();
           
+          gameMaze = new Maze();
            
+    }
+
+    public void setupGame(){
+      gameState = titleState;
     }
 
     // Paint componenet method
     public void paintComponent(Graphics g){
       super.paintComponent(g);
-      Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
-      g.drawImage(backgroundImage,0,0,null);
       Graphics2D g2 = (Graphics2D) g;
-       
-      turtle.draw(g2);
+
+      if(gameState == titleState){
+        ui.draw(g2);
+      }else{
       
-      
-      s1.draw(g2);
-      s2.draw(g2);
-      scuba.draw(g2);
-      gameMaze.draw(g2);
+        Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
+        g.drawImage(backgroundImage,0,0,null);
+        
+        
+        turtle.draw(g2);
+        
+        
+        s.draw(g2); //Shark
+        sc.draw(g2);  //Scuba
+        gameMaze.draw(g2);
+      }
     }
     
     public void actionPerformed(ActionEvent e) {
-       char [][] gameBarriers = gameMaze.getBarriers();
-
-       final int min = 0;
+      char [][] gameBarriers = gameMaze.getBarriers();
+      
+      final int min = 0;
        //based on example board
        final int horizMax = 20;
        final int vertMax = 8;
@@ -132,10 +149,11 @@ public class GameBoard extends JPanel implements ActionListener{
         }
         
   
-      //Update Shark image
+      //Update images
       
-      s1.update();
-      s2.update();
+      turtle.update();
+      s.update();
+      sc.update();
       repaint();
     }
 
