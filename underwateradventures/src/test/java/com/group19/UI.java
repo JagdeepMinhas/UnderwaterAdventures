@@ -3,7 +3,10 @@ package com.group19;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
+import java.awt.Image;
 import java.awt.image.BufferedImage;
+
+import javax.imageio.IIOImage;
 import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
@@ -21,7 +24,7 @@ public class UI {
       this.gb = gb;
 
       try{
-        gameOver = Font.createFont(Font.TRUETYPE_FONT, new File("Resources/Font/Gameplay.ttf")).deriveFont(50F);
+        gameOver = Font.createFont(Font.TRUETYPE_FONT, new File("Resources/Font/Gameplay.ttf")).deriveFont(45F);
       } catch (IOException | FontFormatException e){
         e.printStackTrace();
       } 
@@ -38,13 +41,15 @@ public class UI {
         }catch(IOException ex){
             System.err.println("Could not load image");
         }
-        g.drawImage(startbckgd, 0,0,null);
+
+
+        g.drawImage((startbckgd.getScaledInstance(gb.getWidth(), gb.getHeight(), Image.SCALE_SMOOTH)), 0,0,null);
         
         g.setFont(gameOver);
 
         String text = "start";
-        int x = (gb.screenWidth/2)+150;
-        int y = (gb.screenHeight/2) +150;
+        int x = (gb.screenWidth/2)-62;
+        int y = (gb.screenHeight/2)+150;
 
        
         //Menu 
