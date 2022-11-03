@@ -6,10 +6,10 @@ import com.Entity.SharkController;
 import com.Entity.KeyHandler;
 import com.Entity.Maze;
 import com.Entity.ScubaController;
-import com.Entity.Scubadiver;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
+import java.text.DecimalFormat;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import javax.swing.Timer;
@@ -26,6 +26,12 @@ public class GameBoard extends JPanel implements ActionListener{
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
+    Font gameOver;
+
+    //Time
+    public double playTime;
+    DecimalFormat dFormat = new DecimalFormat("#0.00");
+  
     // Gameloop Timer
     Timer gameTimer;
 
@@ -34,21 +40,32 @@ public class GameBoard extends JPanel implements ActionListener{
     public final int titleState = 0;
     public final int playState = 1; 
     public final int pauseState = 2;
+    public final int gameOverState = 6;
 
     public UI ui = new UI(this);
+    public GameOverUI goUI = new GameOverUI(this);
     KeyHandler key = new KeyHandler(this);
 
-    // Shark Objects
+    // Objects
     SharkController s;
     ScubaController sc;
-    Turtle turtle;
+    
+    public Turtle turtle = new Turtle(this);
     Maze gameMaze;
 
-    //GameBoard constructor 
+    // GameBoard constructor 
     BufferedImage myPicture =null;
     public GameBoard(){
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
         this.setPreferredSize(boardDim);  
+        
+        try{
+          gameOver = Font.createFont(Font.TRUETYPE_FONT, new File("Resources/Font/Gameplay.ttf")).deriveFont(45F);
+        } catch (IOException | FontFormatException e){
+          e.printStackTrace();
+        } 
+        
+        
 
         try{
           myPicture = ImageIO.read(new File("Resources/Images/GameBoard/GameBoardBckgd.png"));
@@ -62,14 +79,18 @@ public class GameBoard extends JPanel implements ActionListener{
           gameTimer.start();
       
          
-          turtle= new Turtle();
+          
 
           s = new SharkController();
           sc = new ScubaController();
           
           gameMaze = new Maze();
+
+          
            
     }
+    
+    
 
     public void setupGame(){
       gameState = titleState;
@@ -82,11 +103,23 @@ public class GameBoard extends JPanel implements ActionListener{
 
       if(gameState == titleState){
         ui.draw(g2);
-      }else{
+        
+      }
+      else if(gameState == gameOverState){
+        goUI.draw(g2);
+        g.drawString("Time:"+dFormat.format(playTime), 40, 60 );  //Display final timer
+        
+        
+      }
+      else{
       
         Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
         g.drawImage(backgroundImage,0,0,null);
         
+        //Display timer going up
+        playTime +=(double)1/60;
+        g.setFont(gameOver);
+        g.drawString("Time:"+dFormat.format(playTime), 40, 400 );
         
         turtle.draw(g2);
         
@@ -97,6 +130,11 @@ public class GameBoard extends JPanel implements ActionListener{
       }
     }
     
+    public void restart(){
+      turtle.setDefaultPositions(40, 40); //Reset Turtle position when restart game
+      playTime = 0; //Reset Timer to 0 when restart game
+    }
+
     public void actionPerformed(ActionEvent e) {
       char [][] gameBarriers = gameMaze.getBarriers();
       
@@ -157,9 +195,6 @@ public class GameBoard extends JPanel implements ActionListener{
       repaint();
     }
 
-
-    
-
-
+  
 
 }

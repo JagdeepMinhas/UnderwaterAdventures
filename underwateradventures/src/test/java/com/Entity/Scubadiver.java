@@ -8,6 +8,12 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Scubadiver extends Entity  {
+    
+    int gCost;      //the distance between the current cell and the start cell
+    int hCost;      //distance from current cell to the goal cell
+    int fCost;      //total cost of cell
+    
+    
     public Scubadiver(){
         super();
         this.setxPosition(200);

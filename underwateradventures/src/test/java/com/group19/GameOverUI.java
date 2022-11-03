@@ -1,5 +1,4 @@
 package com.group19;
-
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics2D;
@@ -12,14 +11,14 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.FontFormatException;
 
-public class UI {
-    
+public class GameOverUI {
     GameBoard gb; 
     Font gameOver, arial_40;
     public int commandNum = 0;
     
+
    
-    public UI(GameBoard gb){
+    public GameOverUI(GameBoard gb){
       this.gb = gb;
 
       try{
@@ -33,11 +32,10 @@ public class UI {
     }
 
     public void draw (Graphics2D g){
-      BufferedImage startbckgd = null;
-      
-      if(gb.gameState == gb.titleState){
+      BufferedImage gameoverbckgd = null;
+      if(gb.gameState == gb.gameOverState){
         try{
-           startbckgd = ImageIO.read(new File("Resources/Images/PrePostScreen/gameStartBckgd2.png"));
+           gameoverbckgd = ImageIO.read(new File("Resources/Images/PrePostScreen/gameOverBckgd2.png"));
         }catch(IOException ex){
             System.err.println("Could not load image");
         }
@@ -45,16 +43,17 @@ public class UI {
 
 
 
-        g.drawImage((startbckgd.getScaledInstance(gb.getWidth(), gb.getHeight(), Image.SCALE_SMOOTH)), 0,0,null);
+        g.drawImage((gameoverbckgd.getScaledInstance(gb.getWidth(), gb.getHeight(), Image.SCALE_SMOOTH)), 0,0,null);
         
         g.setFont(gameOver);
 
-        String text = "start";
+        String text = "Play Again?";
         int x = (gb.screenWidth/2)-62;
         int y = (gb.screenHeight/2)+150;
-
         
-
+        
+        //Time
+        
        
         //Menu 
         if(commandNum == 0){

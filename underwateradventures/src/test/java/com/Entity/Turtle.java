@@ -1,5 +1,8 @@
 package com.Entity;
 import javax.imageio.*;
+
+import com.group19.GameBoard;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.LinkedList;
@@ -8,17 +11,19 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public class Turtle extends Entity  {
-
+    GameBoard gb;
 
     int speed= entitySize; // turtle will move at most 4opx with every move
     
     private LinkedList<Shark> e = SharkController.getSharkBounds();
     private LinkedList<Scubadiver> a = ScubaController.getScubaBounds();
+    
 
-    public Turtle(){
+    public Turtle(GameBoard gb){
         super();
         this.setxPosition(entitySize);   
         this.setyPosition(entitySize);
+        this.gb = gb;
     }
 
     public Turtle(int x, int y){
@@ -27,6 +32,11 @@ public class Turtle extends Entity  {
         this.setyPosition(y);
     }
 
+    public void setDefaultPositions(int x, int y) {
+        this.setxPosition(x);
+        this.setyPosition(y);
+    }
+    
     //makes a Invisible Rectangle around entity to be used to check collision
     public Rectangle getBounds(){
         return new Rectangle(this.getxPosition(), this.getyPosition(), 40, 40);
@@ -42,17 +52,17 @@ public class Turtle extends Entity  {
     public void SharkCollision(){
         for (int i = 0; i<e.size(); i++){
             if(getBounds().intersects(e.get(i).getBounds())){       //if intersects with shark
-                System.out.println("COLLISION");
-                System.exit(0);                             //exit game (idk how to make gameOverBckgd to pop out);
+                //System.out.println("COLLISION");
+                gb.gameState = gb.gameOverState;                            //Game Over Screen activated
             }
         }
     }
 
     public void ScubaCollision(){
         for (int i = 0; i<a.size(); i++){
-            if(getBounds().intersects(a.get(i).getBounds())){       //if intersects with shark
-                System.out.println("COLLISION");
-                System.exit(0);                             //exit game (idk how to make gameOverBckgd to pop out);
+            if(getBounds().intersects(a.get(i).getBounds())){       //if intersects with scuba
+                //System.out.println("COLLISION");
+                gb.gameState = gb.gameOverState;                             //Game Over Screen activated
             }
         }
     }

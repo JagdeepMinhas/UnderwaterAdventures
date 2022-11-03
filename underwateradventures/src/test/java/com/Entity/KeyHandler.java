@@ -10,6 +10,7 @@ public class KeyHandler implements KeyListener{
 
     public boolean upPressed, downPressed,leftPressed, rightPressed,keyEnter;
     
+    
     public KeyHandler(GameBoard gb){
         this.gb = gb;
     }
@@ -19,10 +20,12 @@ public class KeyHandler implements KeyListener{
         
     }
 
+
    
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();
+        
 
         if(gb.gameState == gb.titleState){
 
@@ -30,6 +33,14 @@ public class KeyHandler implements KeyListener{
                 gb.gameState = gb.playState;
             }
         }
+        if(gb.gameState == gb.gameOverState){
+
+            if(keyCode == KeyEvent.VK_ENTER){
+                gb.gameState = gb.playState;
+                gb.restart();
+            }
+        }
+
         if(gb.gameState == gb.playState){
 
             if (keyCode == KeyEvent.VK_W){
