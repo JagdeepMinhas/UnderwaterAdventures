@@ -57,6 +57,19 @@ public class Maze extends Entity  {
 
     }
 
+    void drawSeaweed(Graphics2D g){
+        BufferedImage pic = null;
+        try {
+            pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSeaweed.png"));
+     
+           } catch (IOException ex) {
+             System.err.println("Could not load image");
+           }
+ 
+        g.drawImage(pic, tempX, tempY,40,40, null);
+
+    }
+
     void setBarriers(){
         String row;
         File file = new File("Resources/MapGrid.txt");
@@ -95,6 +108,11 @@ public class Maze extends Entity  {
                         tempX = j * entitySize;
                         tempY = i * entitySize;
                         drawCoral(g);
+                    }
+                    if(barriers[i][j] == 'S'){
+                        tempX = j * entitySize;
+                        tempY = i * entitySize;
+                        drawSeaweed(g);
                     }
                 }
                 
