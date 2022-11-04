@@ -150,7 +150,11 @@ public class GameBoard extends JPanel implements ActionListener{
 
             if(nextVertPos > min){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                turtle.moveUp();
+
+                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                  turtle.moveUp();
+                }
+
               }
           }
         }
@@ -161,7 +165,9 @@ public class GameBoard extends JPanel implements ActionListener{
           int nextHorizPos = turtle.getxPosition()/40;
             if(nextVertPos < vertMax){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                turtle.moveDown();
+                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                  turtle.moveDown();
+                }
               }
             }
         }
@@ -171,7 +177,9 @@ public class GameBoard extends JPanel implements ActionListener{
           int nextHorizPos = turtle.getxPosition()/40 - 1;
             if(nextHorizPos > min){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                turtle.moveLeft();
+                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                  turtle.moveLeft();
+                }
               }
             }
         }
@@ -181,7 +189,9 @@ public class GameBoard extends JPanel implements ActionListener{
 
             if(nextHorizPos < horizMax){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                 turtle.moveRight();
+                }
               }
             }
         }
