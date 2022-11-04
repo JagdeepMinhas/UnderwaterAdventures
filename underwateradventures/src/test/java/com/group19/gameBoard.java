@@ -201,7 +201,7 @@ public class GameBoard extends JPanel implements ActionListener{
       
       turtle.update();
       s.update();
-      sc.update();
+      sc.update(turtle,gameMaze);
       repaint();
     }
 

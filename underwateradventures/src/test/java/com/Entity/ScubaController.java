@@ -9,7 +9,7 @@ public class ScubaController {
     Scubadiver TempScuba;
     
     public ScubaController(){
-        addScuba(new Scubadiver(200,200));
+        addScuba(new Scubadiver(680,80));
     }
 
     public void draw(Graphics2D g){
@@ -20,11 +20,11 @@ public class ScubaController {
         }
     }
 
-    public void update(){
+    public void update(Turtle t, Maze m){
         for (int i = 0; i < a.size(); i++){
             TempScuba = a.get(i);
 
-            TempScuba.update();
+            TempScuba.update(t,m);
         }
     }
 

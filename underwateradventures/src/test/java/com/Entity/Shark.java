@@ -29,7 +29,7 @@ public class Shark extends Entity {
             speed = -40;
         }
 
-        if (this.getxPosition() < 80) {
+        if (this.getxPosition() < 380) {
             speed = 40;
         }
     }

@@ -22,7 +22,7 @@ public class Turtle extends Entity  {
     public Turtle(GameBoard gb){
         super();
         this.setxPosition(entitySize);   
-        this.setyPosition(entitySize);
+        this.setyPosition(560);
         this.gb = gb;
     }
 

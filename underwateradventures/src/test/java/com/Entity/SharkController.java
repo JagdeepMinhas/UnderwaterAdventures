@@ -8,8 +8,8 @@ public class SharkController {
     Shark TempShark;
     
     public SharkController(){
-        addShark(new Shark(40,80));
-        addShark(new Shark(80, 160));
+        addShark(new Shark(40,40));
+        addShark(new Shark(80, 560));
     }
 
     public void draw(Graphics2D g){
