@@ -22,7 +22,7 @@ public class GameBoard extends JPanel implements ActionListener{
     
     // 50x50 gameBoard
     final int maxCol = 25;
-    final int maxRow = 20;
+    final int maxRow = 25;
     final int screenWidth = maxCol * cellSize;
     final int screenHeight = maxRow * cellSize;
 
@@ -140,8 +140,8 @@ public class GameBoard extends JPanel implements ActionListener{
       
       final int min = 0;
        //based on example board
-       final int horizMax = 20;
-       final int vertMax = 8;
+       final int horizMax = 25;
+       final int vertMax = 16;
        
 
        if (key.upPressed==true){
