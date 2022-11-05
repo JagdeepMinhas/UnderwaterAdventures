@@ -1,7 +1,7 @@
 package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
-import com.Entity.Shark;
+import com.Rewards.RegualrRewards;
 import com.Entity.SharkController;
 import com.Entity.KeyHandler;
 import com.Entity.Maze;
@@ -49,13 +49,14 @@ public class GameBoard extends JPanel implements ActionListener{
     // Objects
     SharkController s;
     ScubaController sc;
+    private RegualrRewards keys;
     
     public Turtle turtle = new Turtle(this);
     Maze gameMaze;
 
     // GameBoard constructor 
     BufferedImage myPicture =null;
-    public GameBoard(){
+    public GameBoard() throws IOException{
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
         this.setPreferredSize(boardDim);  
         
@@ -83,7 +84,7 @@ public class GameBoard extends JPanel implements ActionListener{
 
           s = new SharkController();
           sc = new ScubaController();
-          
+          keys = new RegualrRewards();
           gameMaze = new Maze();
 
           
@@ -127,6 +128,7 @@ public class GameBoard extends JPanel implements ActionListener{
         s.draw(g2); //Shark
         sc.draw(g2);  //Scuba
         gameMaze.draw(g2);
+        keys.draw(g2);
       }
     }
     
