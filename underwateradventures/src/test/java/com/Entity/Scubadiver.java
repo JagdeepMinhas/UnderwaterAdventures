@@ -37,7 +37,12 @@ public class Scubadiver extends Entity  {
     public Rectangle getBounds(){
         return new Rectangle(this.getxPosition(), this.getyPosition(), 40, 40);
     } 
-   
+    
+    public void setDefaultPositions(int x, int y) {
+        this.setxPosition(x);
+        this.setyPosition(y);
+    }
+
     public void update(Turtle t, Maze m){
         int turtleXPos = t.getxPosition();
         int turtleYPos = t.getyPosition();

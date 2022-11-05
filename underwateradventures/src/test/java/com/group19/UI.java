@@ -48,9 +48,9 @@ public class UI {
         
         g.setFont(gameOver);
 
-        String text = "start";
-        int x = (gb.screenWidth/2)-62;
-        int y = (gb.screenHeight/2)+150;
+        String text = "Press ENTER to start!";
+        int x = (gb.screenWidth/2)-300;
+        int y = (gb.screenHeight/2)+200;
 
         
 

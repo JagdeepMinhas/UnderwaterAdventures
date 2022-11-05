@@ -3,13 +3,17 @@ package com.Entity;
 import java.awt.Graphics2D;
 import java.util.LinkedList;
 
-public class ScubaController {
+public class ScubaController extends Entity {
     static LinkedList<Scubadiver> a = new LinkedList<Scubadiver>();
 
     Scubadiver TempScuba;
     
     public ScubaController(){
         addScuba(new Scubadiver(680,80));
+    }
+
+    public void setDefaultPositions(int x, int y) {
+        TempScuba.setDefaultPositions(680, 80);
     }
 
     public void draw(Graphics2D g){

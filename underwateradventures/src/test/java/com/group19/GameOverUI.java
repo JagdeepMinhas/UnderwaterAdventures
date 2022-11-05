@@ -46,8 +46,8 @@ public class GameOverUI {
         
         g.setFont(gameOver);
 
-        String text = "Play Again?";
-        int x = (gb.screenWidth/2)-62;
+        String text = "Press ENTER to Play Again";
+        int x = (gb.screenWidth/2)-340;
         int y = (gb.screenHeight/2)+150;
         
         

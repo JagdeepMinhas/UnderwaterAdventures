@@ -133,7 +133,8 @@ public class GameBoard extends JPanel implements ActionListener{
     }
     
     public void restart(){
-      turtle.setDefaultPositions(40, 40); //Reset Turtle position when restart game
+      turtle.setDefaultPositions(40, 560); //Reset Turtle position when restart game
+      sc.setDefaultPositions(680, 80);
       playTime = 0; //Reset Timer to 0 when restart game
     }
 
