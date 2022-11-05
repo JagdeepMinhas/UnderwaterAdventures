@@ -120,7 +120,7 @@ public class GameBoard extends JPanel implements ActionListener{
         //Display timer going up
         playTime +=(double)1/60;
         g.setFont(gameOver);
-        g.drawString("Time:"+dFormat.format(playTime), 40, 400 );
+        g.drawString("Time:"+dFormat.format(playTime), 0, 680 );
         
         turtle.draw(g2);
         
