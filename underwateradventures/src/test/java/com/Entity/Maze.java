@@ -113,7 +113,7 @@ public class Maze extends Entity  {
                         tempX = j * entitySize;
                         tempY = i * entitySize;
                         drawSeaweed(g);
-                    } 
+                    }
                 }
                 
             }
