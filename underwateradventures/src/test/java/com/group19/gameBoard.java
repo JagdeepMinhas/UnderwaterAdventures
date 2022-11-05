@@ -1,20 +1,27 @@
 package com.group19;
-import javax.swing.*;
-import com.Entity.Turtle;
-import com.Entity.Shark;
-import com.Entity.SharkController;
-import com.Entity.KeyHandler;
-import com.Entity.Maze;
-import com.Entity.ScubaController;
-import javax.imageio.*;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.FontFormatException;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
-import java.awt.*;
-import java.awt.image.BufferedImage;
+
+import javax.imageio.ImageIO;
+import javax.swing.JPanel;
 import javax.swing.Timer;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
+import com.Entity.KeyHandler;
+import com.Entity.Maze;
+import com.Entity.ScubaController;
+import com.Entity.SharkController;
+import com.Entity.Turtle;
+import com.Rewards.RegualrRewards;
 
 public class GameBoard extends JPanel implements ActionListener{
     //cell size in characters (arbitrary)
@@ -44,18 +51,19 @@ public class GameBoard extends JPanel implements ActionListener{
 
     public UI ui = new UI(this);
     public GameOverUI goUI = new GameOverUI(this);
-    KeyHandler key = new KeyHandler(this);
+    KeyHandler keyEvent = new KeyHandler(this);
 
     // Objects
     SharkController s;
     ScubaController sc;
+    private  RegualrRewards keys;
     
     public Turtle turtle = new Turtle(this);
     Maze gameMaze;
 
     // GameBoard constructor 
     BufferedImage myPicture =null;
-    public GameBoard(){
+    public GameBoard() throws IOException{
         Dimension boardDim = new Dimension(screenWidth, screenHeight);
         this.setPreferredSize(boardDim);  
         
@@ -73,18 +81,19 @@ public class GameBoard extends JPanel implements ActionListener{
             System.err.println("Could not load image");
           }
          
-          this.addKeyListener(key);
+          this.addKeyListener(keyEvent);
           this.setFocusable(true);
-          gameTimer = new Timer(10, this);
-          gameTimer.start();
+         
       
          
           
-
+          keys= new RegualrRewards();
           s = new SharkController();
           sc = new ScubaController();
           
           gameMaze = new Maze();
+          gameTimer = new Timer(10, this);
+          gameTimer.start();
 
           
            
@@ -119,11 +128,11 @@ public class GameBoard extends JPanel implements ActionListener{
         //Display timer going up
         playTime +=(double)1/60;
         g.setFont(gameOver);
-        g.drawString("Time:"+dFormat.format(playTime), 40, 400 );
+        g.drawString("Time:"+dFormat.format(playTime), 40, 1000 );
         
         turtle.draw(g2);
         
-        
+        keys.draw(g2);
         s.draw(g2); //Shark
         sc.draw(g2);  //Scuba
         gameMaze.draw(g2);
@@ -144,7 +153,7 @@ public class GameBoard extends JPanel implements ActionListener{
        final int vertMax = 16;
        
 
-       if (key.upPressed==true){
+       if (keyEvent.upPressed==true){
             int nextVertPos = turtle.getyPosition()/40 - 1;
             int nextHorizPos = turtle.getxPosition()/40;
 
@@ -159,7 +168,7 @@ public class GameBoard extends JPanel implements ActionListener{
           }
         }
     
-        if (key.downPressed==true){
+        if (keyEvent.downPressed==true){
 
           int nextVertPos= turtle.getyPosition()/40 + 1;
           int nextHorizPos = turtle.getxPosition()/40;
@@ -172,7 +181,7 @@ public class GameBoard extends JPanel implements ActionListener{
             }
         }
        
-        if (key.leftPressed==true){
+        if (keyEvent.leftPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
           int nextHorizPos = turtle.getxPosition()/40 - 1;
             if(nextHorizPos > min){
@@ -183,7 +192,7 @@ public class GameBoard extends JPanel implements ActionListener{
               }
             }
         }
-        if (key.rightPressed==true){
+        if (keyEvent.rightPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
           int nextHorizPos = turtle.getxPosition()/40 + 1;
 

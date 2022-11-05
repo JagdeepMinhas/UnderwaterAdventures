@@ -1,15 +1,14 @@
 package com.group19;
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.FontFormatException;
 import java.awt.Graphics2D;
 import java.awt.Image;
 import java.awt.image.BufferedImage;
-
-import javax.imageio.IIOImage;
-import javax.imageio.ImageIO;
 import java.io.File;
 import java.io.IOException;
-import java.awt.FontFormatException;
+
+import javax.imageio.ImageIO;
 
 public class GameOverUI {
     GameBoard gb; 
