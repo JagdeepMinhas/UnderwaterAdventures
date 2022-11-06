@@ -175,7 +175,7 @@ public class GameBoard extends JPanel implements ActionListener{
                             turtle.moveUp();
                           }  
                 
-                      if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                      if(gameBarriers[nextVertPos][nextHorizPos] == 'E'|| gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                         gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                         gameMaze.setMapGrid(vertPos, horizPos, 'E');
                         turtle.moveUp();
@@ -212,7 +212,7 @@ public class GameBoard extends JPanel implements ActionListener{
                         turtle.moveDown();
                         }  
               
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                       gameMaze.setMapGrid(vertPos, horizPos, 'E');
                       turtle.moveDown();
@@ -246,11 +246,11 @@ public class GameBoard extends JPanel implements ActionListener{
                         turtle.moveLeft();
                         }  
               
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                       gameMaze.setMapGrid(vertPos, horizPos, 'E');
                       turtle.moveLeft();
-                    };
+                    }
                         }
                   }
                     
@@ -280,7 +280,7 @@ public class GameBoard extends JPanel implements ActionListener{
                           turtle.moveRight();
                         }  
               
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                       gameMaze.setMapGrid(vertPos, horizPos, 'E');
                       turtle.moveRight();
