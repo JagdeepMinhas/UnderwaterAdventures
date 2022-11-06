@@ -31,7 +31,7 @@ public class UI {
 
     }
 
-    public void draw (Graphics2D g){
+    public void drawGameStart (Graphics2D g){
       BufferedImage startbckgd = null;
       
       if(gb.gameState == gb.titleState){
@@ -56,16 +56,51 @@ public class UI {
 
        
         //Menu 
-        if(commandNum == 0){
-          g.setFont(arial_40);
-          g.setColor(Color.BLACK);
-          g.drawString(">", x-50, y);
-          g.setFont(gameOver);
-          g.drawString(text,x-4,y-4);
-          g.setColor(Color.BLACK);
-          g.drawString(text, x-2, y-2);
+        
+        g.setFont(arial_40);
+        g.setColor(Color.BLACK);
+        g.drawString(">", x-50, y);
+        g.setFont(gameOver);
+        g.drawString(text,x-4,y-4);
+        g.setColor(Color.BLACK);
+        g.drawString(text, x-2, y-2);
           
+        
+      }
+    }
+    
+    public void drawGameOver (Graphics2D g){
+      BufferedImage gameoverbckgd = null;
+      if(gb.gameState == gb.gameOverState){
+        try{
+           gameoverbckgd = ImageIO.read(new File("Resources/Images/PrePostScreen/gameOverBckgd2.png"));
+        }catch(IOException ex){
+            System.err.println("Could not load image");
         }
+
+
+
+
+        g.drawImage((gameoverbckgd.getScaledInstance(gb.getWidth(), gb.getHeight(), Image.SCALE_SMOOTH)), 0,0,null);
+        
+        g.setFont(gameOver);
+
+        String text = "Press ENTER to Play Again";
+        int x = (gb.screenWidth/2)-340;
+        int y = (gb.screenHeight/2)+150;
+        
+        
+        //Time
+        
+       
+        //Menu 
+        g.setFont(arial_40);
+        g.setColor(Color.BLACK);
+        g.drawString(">", x-50, y);
+        g.setFont(gameOver);
+        g.drawString(text,x-4,y-4);
+        g.setColor(Color.BLACK);
+        g.drawString(text, x-2, y-2);
       }
     }
 }

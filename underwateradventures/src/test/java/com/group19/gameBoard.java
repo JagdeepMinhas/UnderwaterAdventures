@@ -1,6 +1,7 @@
 package com.group19;
 import javax.swing.*;
 import com.Entity.Turtle;
+import com.Rewards.BonusRewards;
 import com.Rewards.RegualrRewards;
 import com.Entity.SharkController;
 import com.Entity.KeyHandler;
@@ -39,18 +40,16 @@ public class GameBoard extends JPanel implements ActionListener{
     public int gameState; 
     public final int titleState = 0;
     public final int playState = 1; 
-    public final int pauseState = 2;
-    public final int gameOverState = 6;
+    public final int gameOverState = 2;
 
     public UI ui = new UI(this);
-    public GameOverUI goUI = new GameOverUI(this);
     KeyHandler key = new KeyHandler(this);
 
     // Objects
     SharkController s;
     ScubaController sc;
     private RegualrRewards keys;
-    
+    private BonusRewards worms;
     public Turtle turtle = new Turtle(this);
     Maze gameMaze;
 
@@ -85,6 +84,7 @@ public class GameBoard extends JPanel implements ActionListener{
           s = new SharkController();
           sc = new ScubaController();
           keys = new RegualrRewards();
+          worms = new BonusRewards();
           gameMaze = new Maze();
 
           
@@ -103,11 +103,11 @@ public class GameBoard extends JPanel implements ActionListener{
       Graphics2D g2 = (Graphics2D) g;
 
       if(gameState == titleState){
-        ui.draw(g2);
+        ui.drawGameStart(g2);
         
       }
       else if(gameState == gameOverState){
-        goUI.draw(g2);
+        ui.drawGameOver(g2);
         g.drawString("Time:"+dFormat.format(playTime), 40, 60 );  //Display final timer
         
         
@@ -129,6 +129,7 @@ public class GameBoard extends JPanel implements ActionListener{
         sc.draw(g2);  //Scuba
         gameMaze.draw(g2);
         keys.draw(g2);
+        worms.draw(g2);
       }
     }
     

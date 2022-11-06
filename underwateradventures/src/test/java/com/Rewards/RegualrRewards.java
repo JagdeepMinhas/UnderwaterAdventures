@@ -10,18 +10,22 @@ import java.awt.*;
 import javax.imageio.ImageIO;
 import java.lang.Math;
 import com.Entity.Entity;
+import com.Entity.Maze;
+// import com.Entity.Barrier;
 
 public class RegualrRewards extends Entity {
-    final int NO_Of_KEYS = 8;
+    int tempX,tempY;
+    final int NO_Of_KEYS;
     public int gridRow = 16;
     public int gridCol = 25;
     int x;
     int y;
-    private static int count = 0;
-    private char[][] grid = new char[gridRow][gridCol];
+    // private static int count;
+    Maze maze = new Maze();
+    // M = new char[gridRow][gridCol];
 
    public RegualrRewards() throws IOException {
-        count = NO_Of_KEYS;
+        NO_Of_KEYS = 8;
         readGrid();
         setKeys();
     }
@@ -36,7 +40,7 @@ public class RegualrRewards extends Entity {
             for (int i = 0; i < gridRow; i++) {
                 row = sc.nextLine();
                 for (int j = 0; j < gridCol; j++) {
-                    this.grid[i][j] = row.charAt(j);
+                    maze.barriers[i][j] = row.charAt(j);
                 }
             }
             sc.close();
@@ -57,22 +61,22 @@ public class RegualrRewards extends Entity {
             System.err.println("Could not load image");
         }
         
-        g.drawImage(pic, this.getxPosition(), this.getyPosition(), 40, 40, null);
+        g.drawImage(pic, tempX, tempY, 40, 40, null);
     }
 
     public void setKeys() throws IOException {
         int i = 0;
-        while (i <= NO_Of_KEYS) {
+        while (i < NO_Of_KEYS) {
             int randomRow = (int) (Math.random() * (gridRow));
             
             int randomCol = (int) (Math.random() * (gridCol));
            
-            if (grid[randomRow][randomCol] == 'E') {
-                grid[randomRow][randomCol] = 'K';
+            if ((maze.barriers[randomRow][randomCol] == 'E')){
+                maze.barriers[randomRow][randomCol] = 'K';
                 i++;
             }
         }
-        // updateGrid();
+
 
     }
 
@@ -88,7 +92,7 @@ public class RegualrRewards extends Entity {
             for (int i = 0; i < gridRow; i++) {
                 row = sc.nextLine();
                 for (int j = 0; j < gridCol; j++) {
-                    if (grid[i][j] == 'E') {
+                    if (maze.barriers[i][j] == 'E'){
                         StringBuilder temp = new StringBuilder(row);
                         temp.setCharAt(j, 'E');
                         String newString = temp.toString();
@@ -110,9 +114,9 @@ public class RegualrRewards extends Entity {
 
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
-                if(grid[i][j]=='K'){
-                    this.setxPosition(i*40);
-                    this.setyPosition(j*40);
+                if(maze.barriers[i][j]=='K' ){
+                    tempX = j * 40;
+                    tempY = i * 40;
 
                     drawKeys(g);
 
