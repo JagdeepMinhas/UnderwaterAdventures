@@ -19,7 +19,26 @@ public class Maze extends Entity  {
     //integers based on current MapGrid
     static int maxRow =16;
     static int maxCol = 25;
-    public char [][] mapGrid = new char [maxRow][maxCol];
+    //public char [][] mapGrid = new char [maxRow][maxCol];
+    public char [][] mapGrid = {
+        {'B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B'},
+        {'B','E','E','E','E','E','E','E','E','H','H','H','H','H','H','H','H','E','E','E','E','E','E','E','B'},
+        {'B','E','E','B','B','E','E','S','E','E','E','E','E','E','E','B','E','E','C','E','E','E','E','E','B'},
+        {'B','E','E','B','E','E','B','S','E','C','E','B','E','E','B','B','E','E','E','E','E','E','E','E','B'},
+        {'B','E','E','E','E','E','B','S','E','E','E','B','E','E','B','E','E','E','E','B','B','B','B','B','B'},
+        {'B','B','B','B','B','B','B','E','E','E','E','B','E','E','E','E','E','E','E','E','E','E','E','E','B'},
+        {'B','E','E','E','E','E','E','E','E','E','E','B','B','B','B','B','E','E','E','E','C','E','E','B','B'},
+        {'B','E','E','B','E','E','S','E','B','E','E','B','E','E','E','E','E','E','E','E','E','E','E','E','B'},
+        {'B','E','E','B','B','E','S','B','B','E','E','B','E','E','E','B','B','B','B','B','E','E','C','E','B'},
+        {'B','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','E','B'},
+        {'B','E','E','B','E','E','C','E','E','E','E','E','E','B','B','B','B','B','E','E','E','C','E','S','B'},
+        {'B','E','E','B','E','E','E','E','B','B','B','B','E','B','E','E','E','E','E','E','E','B','B','S','B'},
+        {'B','E','E','B','B','E','E','S','B','E','E','E','E','B','E','E','C','E','B','B','B','B','E','S','B'},
+        {'B','E','E','B','E','E','E','S','B','E','S','S','S','S','E','E','E','E','B','E','E','E','E','E','B'},
+        {'B','E','E','E','E','B','E','E','B','H','H','H','H','H','H','H','H','E','E','E','E','E','E','E','B'},
+        {'B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B'},
+    };
+    
 
     public char [][] getBarriers(){
         return mapGrid;
@@ -74,7 +93,7 @@ public class Maze extends Entity  {
 
     }
 
-    void setBarriers(){
+    /*void setBarriers(){
         String row;
         File file = new File("Resources/MapGrid.txt");
         Scanner sc;
@@ -95,11 +114,12 @@ public class Maze extends Entity  {
         }
 
     }
+    */
 
 
     public void draw(Graphics2D g) {
 
-        setBarriers();
+        //setBarriers();
 
             for(int i=0; i<maxRow;i++){
                 for(int j=0; j<maxCol; j++){

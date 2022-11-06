@@ -40,7 +40,7 @@ public class RegualrRewards extends Entity {
             for (int i = 0; i < gridRow; i++) {
                 row = sc.nextLine();
                 for (int j = 0; j < gridCol; j++) {
-                    maze.barriers[i][j] = row.charAt(j);
+                    maze.mapGrid[i][j] = row.charAt(j);
                 }
             }
             sc.close();
@@ -71,8 +71,8 @@ public class RegualrRewards extends Entity {
             
             int randomCol = (int) (Math.random() * (gridCol));
            
-            if ((maze.barriers[randomRow][randomCol] == 'E')){
-                maze.barriers[randomRow][randomCol] = 'K';
+            if ((maze.mapGrid[randomRow][randomCol] == 'E')){
+                maze.mapGrid[randomRow][randomCol] = 'K';
                 i++;
             }
         }
@@ -92,7 +92,7 @@ public class RegualrRewards extends Entity {
             for (int i = 0; i < gridRow; i++) {
                 row = sc.nextLine();
                 for (int j = 0; j < gridCol; j++) {
-                    if (maze.barriers[i][j] == 'E'){
+                    if (maze.mapGrid[i][j] == 'E'){
                         StringBuilder temp = new StringBuilder(row);
                         temp.setCharAt(j, 'E');
                         String newString = temp.toString();
@@ -114,7 +114,7 @@ public class RegualrRewards extends Entity {
 
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
-                if(maze.barriers[i][j]=='K' ){
+                if(maze.mapGrid[i][j]=='K' ){
                     tempX = j * 40;
                     tempY = i * 40;
 
