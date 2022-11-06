@@ -1,56 +1,43 @@
 package com.Rewards;
 
+import java.awt.Graphics2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.util.Scanner;
-import java.awt.*;
+
 import javax.imageio.ImageIO;
-import java.lang.Math;
+
 import com.Entity.Entity;
 import com.Entity.Maze;
 // import com.Entity.Barrier;
 
 public class RegualrRewards extends Entity {
     int tempX,tempY;
-    final int NO_Of_KEYS;
+    final int NO_Of_KEYS=8;
     public int gridRow = 16;
     public int gridCol = 25;
-    int x;
-    int y;
-    // private static int count;
-    Maze maze = new Maze();
-    // M = new char[gridRow][gridCol];
+    private int keysCollected;
+    
 
-   public RegualrRewards() throws IOException {
-        NO_Of_KEYS = 8;
-        readGrid();
+    Maze maze = new Maze();
+
+
+   public RegualrRewards(){
+        keysCollected=0;
         setKeys();
     }
 
-    public void readGrid() {
-        String row;
-        File file = new File("Resources/MapGrid.txt");
-        Scanner sc;
-        try {
-            sc = new Scanner(file);
+    
+      
 
-            for (int i = 0; i < gridRow; i++) {
-                row = sc.nextLine();
-                for (int j = 0; j < gridCol; j++) {
-                    maze.setMapGrid(i, j, row.charAt(j));
-                }
-            }
-            sc.close();
+    public int getKeysCollected() {
+    return keysCollected;
+}
 
-        } catch (FileNotFoundException e) {
 
-            e.printStackTrace();
-        }
-
-    }
+public void setKeysCollected(int keysCollected) {
+    this.keysCollected = keysCollected;
+}
 
     public void drawKeys(Graphics2D g) {
         BufferedImage pic = null;
@@ -64,7 +51,7 @@ public class RegualrRewards extends Entity {
         g.drawImage(pic, tempX, tempY, 40, 40, null);
     }
 
-    public void setKeys() throws IOException {
+    public void setKeys()  {
         int i = 0;
         while (i < NO_Of_KEYS) {
             int randomRow = (int) (Math.random() * (gridRow));
@@ -80,35 +67,7 @@ public class RegualrRewards extends Entity {
 
     }
 
-    public void updateGrid() throws IOException {
-
-        File file = new File("Resources/MapGrid.txt");
-        String row = "";
-        Scanner sc;
-        try {
-            sc = new Scanner(file);
-            FileWriter fw = new FileWriter(file, true);
-
-            for (int i = 0; i < gridRow; i++) {
-                row = sc.nextLine();
-                for (int j = 0; j < gridCol; j++) {
-                    if (maze.getMapGrid(i, j) == 'E'){
-                        StringBuilder temp = new StringBuilder(row);
-                        temp.setCharAt(j, 'E');
-                        String newString = temp.toString();
-                    }
-                }
-            }
-
-            fw.close();
-            sc.close();
-
-        } catch (FileNotFoundException e) {
-
-            e.printStackTrace();
-        }
-
-    }
+     
 
     public void draw(Graphics2D g) {
 
@@ -117,7 +76,6 @@ public class RegualrRewards extends Entity {
                 if(maze.getMapGrid(i, j) =='K' ){
                     tempX = j * 40;
                     tempY = i * 40;
-
                     drawKeys(g);
 
                 }

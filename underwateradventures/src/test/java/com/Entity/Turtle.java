@@ -13,6 +13,8 @@ import java.awt.image.BufferedImage;
 public class Turtle extends Entity  {
     GameBoard gb;
 
+    private int score;
+
     int speed= entitySize; // turtle will move at most 4opx with every move
     
     private LinkedList<Shark> e = SharkController.getSharkBounds();
@@ -21,9 +23,18 @@ public class Turtle extends Entity  {
 
     public Turtle(GameBoard gb){
         super();
+        this.score=0;
         this.setxPosition(entitySize);   
         this.setyPosition(560);
         this.gb = gb;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 
     public Turtle(int x, int y){

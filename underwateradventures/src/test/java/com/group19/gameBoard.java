@@ -121,6 +121,8 @@ public class GameBoard extends JPanel implements ActionListener{
         playTime +=(double)1/60;
         g.setFont(gameOver);
         g.drawString("Time:"+dFormat.format(playTime), 0, 680 );
+        g.drawString("Score:"+turtle.getScore(), 300, 680 );
+        g.drawString("Keys:"+keys.getKeysCollected(),600,680);
         
         turtle.draw(g2);
         
@@ -130,6 +132,7 @@ public class GameBoard extends JPanel implements ActionListener{
         gameMaze.draw(g2);
         keys.draw(g2);
         worms.draw(g2);
+        g2.dispose();
       }
     }
     
@@ -159,16 +162,31 @@ public class GameBoard extends JPanel implements ActionListener{
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                   if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                     turtle.moveUp();
-                }else{
-                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                    turtle.moveUp();
+                      }
+                      else{
+                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                            int tempScore = turtle.getScore()+10;
+                              turtle.setScore(tempScore);
+                              turtle.moveUp();
+                        }  
+                        if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                          int temp = keys.getKeysCollected()+1;
+                            keys.setKeysCollected(temp);
+                            turtle.moveUp();
+                          }  
+                
+                      if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                        turtle.moveUp();
+                      }
+                    }
+                    }
+                  }
                 }
               }
-
-              }
-          }
-        }
+          
+        
     
         if (key.downPressed==true){
 
@@ -182,11 +200,24 @@ public class GameBoard extends JPanel implements ActionListener{
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                   if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                     turtle.moveDown();
-                }else{
-                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                    turtle.moveDown();
-                }
+                      }else{
+                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                          int tempScore = turtle.getScore()+10;
+                            turtle.setScore(tempScore);
+                            turtle.moveDown();
+                      }  
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                        int temp = keys.getKeysCollected()+1;
+                        keys.setKeysCollected(temp);
+                        turtle.moveDown();
+                        }  
+              
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveDown();
+                    }
+                        }
                 }
               }
             }
@@ -203,14 +234,28 @@ public class GameBoard extends JPanel implements ActionListener{
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                   if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                     turtle.moveLeft();
-                }else{
-                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                    turtle.moveLeft();
-                }
-                }
+                      }else{
+                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                          int tempScore = turtle.getScore()+10;
+                            turtle.setScore(tempScore);
+                            turtle.moveLeft();
+                      }  
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                        int temp = keys.getKeysCollected()+1;
+                        keys.setKeysCollected(temp);
+                        turtle.moveLeft();
+                        }  
+              
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveLeft();
+                    };
+                        }
+                  }
+                    
               }
-            }
+          }
         }
         if (key.rightPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
@@ -223,11 +268,24 @@ public class GameBoard extends JPanel implements ActionListener{
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                   if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                     turtle.moveRight();
-                }else{
-                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                    turtle.moveRight();
-                }
+                      }else{
+                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                          int tempScore = turtle.getScore()+10;
+                            turtle.setScore(tempScore);
+                            turtle.moveRight();
+                      }  
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                        int temp = keys.getKeysCollected()+1;
+                            keys.setKeysCollected(temp);
+                          turtle.moveRight();
+                        }  
+              
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'){
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveRight();
+                    }
+                  }
                 }
               }
             }
