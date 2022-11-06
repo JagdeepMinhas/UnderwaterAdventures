@@ -38,6 +38,7 @@ public class Maze extends Entity  {
         {'B','E','E','E','E','B','E','E','B','H','H','H','H','H','H','H','H','E','E','E','E','E','E','E','B'},
         {'B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B'},
     };
+
     
 
     public char [][] getBarriers(){
@@ -93,33 +94,10 @@ public class Maze extends Entity  {
 
     }
 
-    /*void setBarriers(){
-        String row;
-        File file = new File("Resources/MapGrid.txt");
-        Scanner sc;
-        try {
-            sc = new Scanner(file);
-           
-                for(int i=0; i <maxRow; i++){
-                    row = sc.nextLine();
-                    for(int j=0; j< maxCol; j++){
-                        this.mapGrid[i][j] = row.charAt(j);
-                    }
-                }
-            sc.close();
-
-        } catch (FileNotFoundException e) {
-           
-            e.printStackTrace();
-        }
-
-    }
-    */
-
 
     public void draw(Graphics2D g) {
 
-        //setBarriers();
+        
 
             for(int i=0; i<maxRow;i++){
                 for(int j=0; j<maxCol; j++){
