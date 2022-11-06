@@ -68,13 +68,13 @@ public class BonusRewards extends Entity {
 
     public void setWorms() throws IOException {
         int i = 0;
-        while (i <= NO_OF_WORMS) {
+        while (i < NO_OF_WORMS) {
             int randomRow = (int) (Math.random() * (gridRow));
             
             int randomCol = (int) (Math.random() * (gridCol));
            
             if ((maze.getMapGrid(randomRow, randomCol) == 'E')){
-                maze.setMapGrid(randomRow, randomCol, 'k');
+                maze.setMapGrid(randomRow, randomCol, 'W');
                 i++;
             }
         }
@@ -116,7 +116,7 @@ public class BonusRewards extends Entity {
 
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
-                if(maze.getMapGrid(i, j) =='K' ){
+                if(maze.getMapGrid(i, j) =='W' ){
                     tempX = j * 40;
                     tempY = i * 40;
 
