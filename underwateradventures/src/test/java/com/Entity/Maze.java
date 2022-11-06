@@ -19,14 +19,14 @@ public class Maze extends Entity  {
     //integers based on current MapGrid
     static int maxRow =16;
     static int maxCol = 25;
-    public char [][] barriers = new char [maxRow][maxCol];
+    public char [][] mapGrid = new char [maxRow][maxCol];
 
     public char [][] getBarriers(){
-        return barriers;
+        return mapGrid;
     }
 
-    public void setBarriers(int x, int y, char value){
-        barriers[x][y] = value;
+    public void setMapGrid(int x, int y, char value){
+        mapGrid[x][y] = value;
     }
 
 
@@ -84,7 +84,7 @@ public class Maze extends Entity  {
                 for(int i=0; i <maxRow; i++){
                     row = sc.nextLine();
                     for(int j=0; j< maxCol; j++){
-                        this.barriers[i][j] = row.charAt(j);
+                        this.mapGrid[i][j] = row.charAt(j);
                     }
                 }
             sc.close();
@@ -103,17 +103,17 @@ public class Maze extends Entity  {
 
             for(int i=0; i<maxRow;i++){
                 for(int j=0; j<maxCol; j++){
-                    if(barriers[i][j] == 'B'){
+                    if(mapGrid[i][j] == 'B'){
                         tempX = j * entitySize;
                         tempY = i * entitySize;
                         drawRock(g);
                     }
-                    if(barriers[i][j] == 'C'){
+                    if(mapGrid[i][j] == 'C'){
                         tempX = j * entitySize;
                         tempY = i * entitySize;
                         drawCoral(g);
                     }
-                    if(barriers[i][j] == 'S'){
+                    if(mapGrid[i][j] == 'S'){
                         tempX = j * entitySize;
                         tempY = i * entitySize;
                         drawSeaweed(g);
