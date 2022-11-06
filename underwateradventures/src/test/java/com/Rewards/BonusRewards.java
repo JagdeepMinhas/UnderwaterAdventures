@@ -24,7 +24,7 @@ public class BonusRewards extends Entity {
     Maze maze = new Maze();
 
     public BonusRewards()  {
-    ;
+    
         setWorms();
     }
 
