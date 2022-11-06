@@ -25,6 +25,10 @@ public class Maze extends Entity  {
         return barriers;
     }
 
+    public void setBarriers(int x, int y, char value){
+        barriers[x][y] = value;
+    }
+
 
     public Maze() {
         this.setxPosition(0);

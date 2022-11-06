@@ -156,8 +156,10 @@ public class GameBoard extends JPanel implements ActionListener{
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
 
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                  gameBarriers[turtle.getxPosition()/40][turtle.getyPosition()/40] = 'E';
+                  gameBarriers[turtle.getxPosition()/40][turtle.getyPosition()/40-1] = 'T';
                   turtle.moveUp();
-                }
+              }
 
               }
           }
