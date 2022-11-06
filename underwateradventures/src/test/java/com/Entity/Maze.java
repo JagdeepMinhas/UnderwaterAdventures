@@ -19,10 +19,14 @@ public class Maze extends Entity  {
     //integers based on current MapGrid
     static int maxRow =16;
     static int maxCol = 25;
-    public char [][] mapGrid = new char [maxRow][maxCol];
+    private char [][] mapGrid = new char [maxRow][maxCol];
 
     public char [][] getBarriers(){
         return mapGrid;
+    }
+
+    public char getMapGrid(int x, int y){
+        return mapGrid[x][y];
     }
 
     public void setMapGrid(int x, int y, char value){
