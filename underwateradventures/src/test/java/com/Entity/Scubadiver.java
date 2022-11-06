@@ -49,7 +49,7 @@ public class Scubadiver extends Entity  {
         int diffY = Math.abs(turtleYPos - this.getyPosition());
         int diffX = Math.abs(turtleXPos - this.getxPosition());
    
-        this.getValidMoves(m.getBarriers());
+        this.getValidMoves(m.getBarriers(), m);
         if(diffX>diffY){
            
             for(int i=0; i < movesList.size(); i++){
@@ -87,9 +87,9 @@ public class Scubadiver extends Entity  {
 
     }
 
-    void getValidMoves(char [][] b ){
+    void getValidMoves(char [][] b, Maze m ){
        for(int i=0; i < 4; i++){
-            if(this.isMoveValid(b, i)){
+            if(this.isMoveValid(b, i, m)){
                 movesList.add(i);
             }else{
                 movesList.add(5);
@@ -97,16 +97,27 @@ public class Scubadiver extends Entity  {
        }
     }
 
-    boolean isMoveValid(char[][] b,int direction){
+    boolean isMoveValid(char[][] b,int direction, Maze m){
         
         if(direction == UP){
             int nextVertPos = this.getyPosition()/40 - 1;
             int nextHorizPos = this.getxPosition()/40;
+            int vertPos = this.getyPosition()/40;
+            int horizPos = this.getxPosition()/40;
 
             if(nextVertPos > min){
                 if(b[nextVertPos][nextHorizPos] != 'B'){
                     if( b[nextVertPos][nextHorizPos] != 'C'){
-                        return true;
+                        if( b[nextVertPos][nextHorizPos] != 'H'){
+                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                            return true;
+                        }else{
+                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
+                            m.setMapGrid(vertPos, horizPos, 'E');
+                            return true;
+                        }
+                    }
+                        
                     }
                 }
             }
@@ -114,21 +125,43 @@ public class Scubadiver extends Entity  {
         if(direction == DOWN){
           int nextVertPos= this.getyPosition()/40 + 1;
           int nextHorizPos = this.getxPosition()/40;
+          int vertPos = this.getyPosition()/40;
+          int horizPos = this.getxPosition()/40;
+
           if(nextVertPos > min){
                 if(b[nextVertPos][nextHorizPos] != 'B'){
                     if( b[nextVertPos][nextHorizPos] != 'C'){
-                        return true;
+                        if( b[nextVertPos][nextHorizPos] != 'H'){
+                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                            return true;
+                        }else{
+                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
+                            m.setMapGrid(vertPos, horizPos, 'E');
+                            return true;
+                        }
                     }
                     }
+                }
             }
         }
         if(direction == RIGHT){
             int nextVertPos = this.getyPosition()/40;
             int nextHorizPos = this.getxPosition()/40 + 1;
+            int vertPos = this.getyPosition()/40;
+            int horizPos = this.getxPosition()/40;
+
             if(nextHorizPos < horizMax){
                 if(b[nextVertPos][nextHorizPos] != 'B'){
                     if(b[nextVertPos][nextHorizPos] != 'C'){
-                        return true;
+                        if( b[nextVertPos][nextHorizPos] != 'H'){
+                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                            return true;
+                        }else{
+                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
+                            m.setMapGrid(vertPos, horizPos, 'E');
+                            return true;
+                        }
+                    }
                     }
                 }
 
@@ -138,10 +171,21 @@ public class Scubadiver extends Entity  {
         if(direction == LEFT){
             int nextVertPos = this.getyPosition()/40;
             int nextHorizPos = this.getxPosition()/40 - 1;
+            int vertPos = this.getyPosition()/40;
+            int horizPos = this.getxPosition()/40;
+
             if(nextHorizPos > min){
                 if(b[nextVertPos][nextHorizPos] != 'B'){
                   if(b[nextVertPos][nextHorizPos] != 'C'){
+                    if( b[nextVertPos][nextHorizPos] != 'H'){
+                    if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
                         return true;
+                    }else{
+                        m.setMapGrid(nextVertPos, nextHorizPos, 'P');
+                        m.setMapGrid(vertPos, horizPos, 'E');
+                        return true;
+                    }
+                }
                   }
                 }
             }

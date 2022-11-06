@@ -9,7 +9,7 @@ public class SharkController {
     
     public SharkController(){
         addShark(new Shark(40,40));
-        addShark(new Shark(80, 560));
+        addShark(new Shark(220, 560));
     }
 
     public void draw(Graphics2D g){

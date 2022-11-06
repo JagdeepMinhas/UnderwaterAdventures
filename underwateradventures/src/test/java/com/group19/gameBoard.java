@@ -151,14 +151,19 @@ public class GameBoard extends JPanel implements ActionListener{
        if (key.upPressed==true){
             int nextVertPos = turtle.getyPosition()/40 - 1;
             int nextHorizPos = turtle.getxPosition()/40;
+            int vertPos = turtle.getyPosition()/40;
+            int horizPos = turtle.getxPosition()/40;
 
             if(nextVertPos > min){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  gameBarriers[turtle.getxPosition()/40][turtle.getyPosition()/40] = 'E';
-                  gameBarriers[turtle.getxPosition()/40][turtle.getyPosition()/40-1] = 'T';
-                  turtle.moveUp();
+                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                    turtle.moveUp();
+                }else{
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveUp();
+                }
               }
 
               }
@@ -169,10 +174,19 @@ public class GameBoard extends JPanel implements ActionListener{
 
           int nextVertPos= turtle.getyPosition()/40 + 1;
           int nextHorizPos = turtle.getxPosition()/40;
+          int vertPos = turtle.getyPosition()/40;
+          int horizPos = turtle.getxPosition()/40;
+          //SET NEXT TO T AND CURRENT TO E
             if(nextVertPos < vertMax){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  turtle.moveDown();
+                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                    turtle.moveDown();
+                }else{
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveDown();
+                }
                 }
               }
             }
@@ -181,10 +195,19 @@ public class GameBoard extends JPanel implements ActionListener{
         if (key.leftPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
           int nextHorizPos = turtle.getxPosition()/40 - 1;
+          int vertPos = turtle.getyPosition()/40;
+          int horizPos = turtle.getxPosition()/40;
+
             if(nextHorizPos > min){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  turtle.moveLeft();
+                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                    turtle.moveLeft();
+                }else{
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveLeft();
+                }
                 }
               }
             }
@@ -192,11 +215,19 @@ public class GameBoard extends JPanel implements ActionListener{
         if (key.rightPressed==true){
           int nextVertPos = turtle.getyPosition()/40;
           int nextHorizPos = turtle.getxPosition()/40 + 1;
+          int vertPos = turtle.getyPosition()/40;
+          int horizPos = turtle.getxPosition()/40;
 
             if(nextHorizPos < horizMax){
               if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
                 if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                turtle.moveRight();
+                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                    turtle.moveRight();
+                }else{
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveRight();
+                }
                 }
               }
             }
