@@ -143,179 +143,197 @@ public class GameBoard extends JPanel implements ActionListener{
     }
 
     public void actionPerformed(ActionEvent e) {
-      char [][] gameBarriers = gameMaze.getBarriers();
-      
-      final int min = 0;
-       //based on example board
-       final int horizMax = 25;
-       final int vertMax = 16;
-       
-
-       if (key.upPressed==true){
-            int nextVertPos = turtle.getyPosition()/40 - 1;
-            int nextHorizPos = turtle.getxPosition()/40;
-            int vertPos = turtle.getyPosition()/40;
-            int horizPos = turtle.getxPosition()/40;
-
-            if(nextVertPos > min){
-              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
-                    turtle.moveUp();
-                      }
-                      else{
-                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
-                            int tempScore = turtle.getScore()+10;
-                              turtle.setScore(tempScore);
-                              gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                              gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                              turtle.moveUp();
-                        }  
-                        if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
-                          int temp = keys.getKeysCollected()+1;
-                            keys.setKeysCollected(temp);
-                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                            turtle.moveUp();
-                          }  
-                
-                      if(gameBarriers[nextVertPos][nextHorizPos] == 'E'|| gameBarriers[nextVertPos][nextHorizPos] == 'H'){
-                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                        turtle.moveUp();
-                      }
-                    }
-                    }
-                  }
-                }
-              }
-          
-        
     
-        if (key.downPressed==true){
-
-          int nextVertPos= turtle.getyPosition()/40 + 1;
-          int nextHorizPos = turtle.getxPosition()/40;
-          int vertPos = turtle.getyPosition()/40;
-          int horizPos = turtle.getxPosition()/40;
-          //SET NEXT TO T AND CURRENT TO E
-            if(nextVertPos < vertMax){
-              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
-                    turtle.moveDown();
-                      }else{
-                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
-                          int tempScore = turtle.getScore()+10;
-                            turtle.setScore(tempScore);
-                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                            turtle.moveDown();
-                      }  
-                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
-                        int temp = keys.getKeysCollected()+1;
-                        keys.setKeysCollected(temp);
-                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                        turtle.moveDown();
-                        }  
-              
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
-                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                      turtle.moveDown();
-                    }
-                        }
-                }
-              }
-            }
-        }
-       
-        if (key.leftPressed==true){
-          int nextVertPos = turtle.getyPosition()/40;
-          int nextHorizPos = turtle.getxPosition()/40 - 1;
-          int vertPos = turtle.getyPosition()/40;
-          int horizPos = turtle.getxPosition()/40;
-
-            if(nextHorizPos > min){
-              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
-                    turtle.moveLeft();
-                      }else{
-                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
-                          int tempScore = turtle.getScore()+10;
-                            turtle.setScore(tempScore);
-                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                            turtle.moveLeft();
-                      }  
-                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
-                        int temp = keys.getKeysCollected()+1;
-                        keys.setKeysCollected(temp);
-                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                        turtle.moveLeft();
-                        }  
-              
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
-                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                      turtle.moveLeft();
-                    }
-                        }
-                  }
-                    
-              }
-          }
-        }
-        if (key.rightPressed==true){
-          int nextVertPos = turtle.getyPosition()/40;
-          int nextHorizPos = turtle.getxPosition()/40 + 1;
-          int vertPos = turtle.getyPosition()/40;
-          int horizPos = turtle.getxPosition()/40;
-
-            if(nextHorizPos < horizMax){
-              if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
-                if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
-                  if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
-                    turtle.moveRight();
-                      }else{
-                        if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
-                          int tempScore = turtle.getScore()+10;
-                            turtle.setScore(tempScore);
-                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                            turtle.moveRight();
-                      }  
-                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
-                        int temp = keys.getKeysCollected()+1;
-                          keys.setKeysCollected(temp);
-                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                          turtle.moveRight();
-                        }  
-              
-                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
-                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
-                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                      turtle.moveRight();
-                    }
-                  }
-                }
-              }
-            }
-        }
-        
-  
-      //Update images
-      
+      moveTurtle();
       turtle.update();
       s.update();
       sc.update(turtle,gameMaze);
       repaint();
     }
 
+  public void moveTurtle(){
+    char [][] gameBarriers = gameMaze.getBarriers();
+      
+    final int min = 0;
+     //based on example board
+     final int horizMax = 25;
+     final int vertMax = 16;
+     
+
+     if (key.upPressed==true){
+          int nextVertPos = turtle.getyPosition()/40 - 1;
+          int nextHorizPos = turtle.getxPosition()/40;
+          int vertPos = turtle.getyPosition()/40;
+          int horizPos = turtle.getxPosition()/40;
+
+          if(nextVertPos > min){
+            if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+              if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  turtle.moveUp();
+                    }
+                    else{
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                          int tempScore = turtle.getScore()+10;
+                            turtle.setScore(tempScore);
+                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                            turtle.moveUp();
+                      }  
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                        int temp = keys.getKeysCollected()+1;
+                          keys.setKeysCollected(temp);
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveUp();
+                          if(keys.getKeysCollected()==keys.getTotalKeys()){
+                            drawExit();
+                          }
+                        }  
+              
+                    if(gameBarriers[nextVertPos][nextHorizPos] == 'E'|| gameBarriers[nextVertPos][nextHorizPos] == 'H'){
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveUp();
+                    }
+                  }
+                  }
+                }
+              }
+            }
+        
+      
   
+      if (key.downPressed==true){
+
+        int nextVertPos= turtle.getyPosition()/40 + 1;
+        int nextHorizPos = turtle.getxPosition()/40;
+        int vertPos = turtle.getyPosition()/40;
+        int horizPos = turtle.getxPosition()/40;
+        //SET NEXT TO T AND CURRENT TO E
+          if(nextVertPos < vertMax){
+            if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+              if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  turtle.moveDown();
+                    }else{
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                        int tempScore = turtle.getScore()+10;
+                          turtle.setScore(tempScore);
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveDown();
+                    }  
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                      int temp = keys.getKeysCollected()+1;
+                      keys.setKeysCollected(temp);
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveDown();
+                      if(keys.getKeysCollected()==keys.getTotalKeys()){
+                        drawExit();
+                      }
+                   }  
+            
+                  if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveDown();
+                  }
+                      }
+              }
+            }
+          }
+      }
+     
+      if (key.leftPressed==true){
+        int nextVertPos = turtle.getyPosition()/40;
+        int nextHorizPos = turtle.getxPosition()/40 - 1;
+        int vertPos = turtle.getyPosition()/40;
+        int horizPos = turtle.getxPosition()/40;
+
+          if(nextHorizPos > min){
+            if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+              if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  turtle.moveLeft();
+                    }else{
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                        int tempScore = turtle.getScore()+10;
+                          turtle.setScore(tempScore);
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveLeft();
+                    }  
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                      int temp = keys.getKeysCollected()+1;
+                      keys.setKeysCollected(temp);
+                      gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                      gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                      turtle.moveLeft();
+                      if(keys.getKeysCollected()==keys.getTotalKeys()){
+                        drawExit();
+                      }
+                    }  
+            
+                  if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveLeft();
+                  }
+                      }
+                }
+                  
+            }
+        }
+      }
+      if (key.rightPressed==true){
+        int nextVertPos = turtle.getyPosition()/40;
+        int nextHorizPos = turtle.getxPosition()/40 + 1;
+        int vertPos = turtle.getyPosition()/40;
+        int horizPos = turtle.getxPosition()/40;
+
+          if(nextHorizPos < horizMax){
+            if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
+              if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
+                if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  turtle.moveRight();
+                    }else{
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
+                        int tempScore = turtle.getScore()+10;
+                          turtle.setScore(tempScore);
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveRight();
+                    }  
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
+                      int temp = keys.getKeysCollected()+1;
+                        keys.setKeysCollected(temp);
+                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                        turtle.moveRight();
+                        if(keys.getKeysCollected()==keys.getTotalKeys()){
+                          drawExit();
+                        }
+                      }  
+            
+                  if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
+                    gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                    gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                    turtle.moveRight();
+                  }
+                }
+              }
+            }
+          }
+      }
+
+  }
+  public void drawExit(){
+    gameMaze.setMapGrid(0, 22, 'G');
+    gameMaze.setMapGrid(0, 23, 'G');
+
+
+  }
 
 }
