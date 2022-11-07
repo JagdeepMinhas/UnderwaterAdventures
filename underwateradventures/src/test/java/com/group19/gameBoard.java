@@ -137,6 +137,7 @@ public class GameBoard extends JPanel implements ActionListener{
         keys.draw(g2);
         worms.draw(g2);
         squid.draw(g2);
+        squid.update(g2);
         g2.dispose();
       }
     }
@@ -186,6 +187,7 @@ public class GameBoard extends JPanel implements ActionListener{
                           if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
                             gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                             gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                            squid.squidTouched(true, nextVertPos * 40);
                             turtle.moveUp();
                           }
                       
@@ -234,6 +236,7 @@ public class GameBoard extends JPanel implements ActionListener{
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          squid.squidTouched(true, nextVertPos * 40);
                           turtle.moveUp();
                         }
               
@@ -278,7 +281,7 @@ public class GameBoard extends JPanel implements ActionListener{
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
-                          squid.squidTouched(true, nextHorizPos * 40);
+                          squid.squidTouched(true, nextVertPos * 40);
                           turtle.moveUp();
                         }
               
@@ -323,6 +326,7 @@ public class GameBoard extends JPanel implements ActionListener{
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          squid.squidTouched(true, nextVertPos * 40);
                           turtle.moveUp();
                         }
               

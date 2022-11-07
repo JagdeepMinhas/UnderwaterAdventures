@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.time.*;
 
 public class Squid extends Entity {
 
@@ -13,17 +14,19 @@ public class Squid extends Entity {
     int gridCol = 25;
     int tempX;
     int tempY;
-    boolean touched;
+    public boolean touched;
+    public long time_stamp = 0;
 
     public Squid(int x, int y){
         super();
         this.setxPosition(x);
         this.setyPosition(y);
+        this.touched = false;
     }
     void setTouched(boolean value){
         this.touched = value;
-        System.out.println("TOUCHED");
     }
+
 
     void drawSquid(Graphics2D g){
     BufferedImage pic = null;
@@ -45,6 +48,28 @@ public class Squid extends Entity {
                     drawSquid(g);
                 }
             }
+        }
+
+    }
+
+
+    void drawInk(Graphics2D g){
+        Clock clock = Clock.systemDefaultZone();
+        long inkTimeOn = clock.millis() - time_stamp;
+    
+
+        BufferedImage pic = null;
+        try{
+            pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentInkSplash.png"));
+        } catch (IOException ex) {
+            System.err.println("Could not load image");
+        }
+        if(inkTimeOn < 5000){
+      
+        boolean draw = g.drawImage(pic,200,40,800,800,null);
+        this.touched = false;
+        } else {
+            time_stamp = clock.millis();
         }
 
     }

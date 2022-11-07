@@ -9,8 +9,8 @@ public class SquidController extends Entity {
     Squid tempSquid;
 
     public SquidController(){
-        addSquid(new Squid(880,480));
-
+        addSquid(new Squid(200,200));
+        addSquid(new Squid(800,480));
     }
 
     void addSquid(Squid squid){
@@ -25,13 +25,21 @@ public class SquidController extends Entity {
  
     }  
     
-    public void squidTouched(boolean touch, int x){
-        for(int i=0; i < squidList.size();i++){
-            if (x == squidList.get(i).getxPosition()){
-                tempSquid =  squidList.get(i);
+    public void squidTouched(boolean touch, int y){
+        for(int i=0; i < squidList.size();i++){  
+                if(squidList.get(i).getyPosition()==y)    {
+                    tempSquid = squidList.get(i);
+                }          
             }
-        }
+        
         tempSquid.setTouched(touch);
+    }
+
+    public void update(Graphics2D g){
+        boolean val = tempSquid.touched;
+        if(tempSquid.touched == true){
+            tempSquid.drawInk(g);
+        }
     }
 
 }
