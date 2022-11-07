@@ -37,6 +37,10 @@ public class Turtle extends Entity  {
         this.score = score;
     }
 
+    public void resetScore(){
+        this.score = 0;
+    }
+
     public Turtle(int x, int y){
         super();
         this.setxPosition(x);

@@ -41,6 +41,7 @@ public class GameBoard extends JPanel implements ActionListener{
     public final int titleState = 0;
     public final int playState = 1; 
     public final int gameOverState = 2;
+    public final int gameWinState = 3;
 
     public UI ui = new UI(this);
     KeyHandler key = new KeyHandler(this);
@@ -109,9 +110,16 @@ public class GameBoard extends JPanel implements ActionListener{
       else if(gameState == gameOverState){
         ui.drawGameOver(g2);
         g.drawString("Time:"+dFormat.format(playTime), 40, 60 );  //Display final timer
-        
-        
-      }
+        g.drawString("Score:"+turtle.getScore(), 40, 120 );
+        }
+      else if (gameState == gameWinState){
+        ui.drawGameWin(g2);
+        g.drawString("Time:"+dFormat.format(playTime), 40, 60 );  //Display final timer
+        g.drawString("Score:"+turtle.getScore(), 40, 120 );
+
+
+      }  
+
       else{
       
         Image backgroundImage = myPicture.getScaledInstance(this.getWidth(), this.getHeight(),Image.SCALE_SMOOTH);
@@ -122,7 +130,7 @@ public class GameBoard extends JPanel implements ActionListener{
         g.setFont(gameOver);
         g.drawString("Time:"+dFormat.format(playTime), 0, 680 );
         g.drawString("Score:"+turtle.getScore(), 300, 680 );
-        g.drawString("Keys:"+keys.getKeysCollected(),600,680);
+        g.drawString("Keys:"+keys.getKeysCollected()+"/5",600,680);
         
         turtle.draw(g2);
         
@@ -140,6 +148,14 @@ public class GameBoard extends JPanel implements ActionListener{
       turtle.setDefaultPositions(40, 560); //Reset Turtle position when restart game
       sc.setDefaultPositions(680, 80);
       playTime = 0; //Reset Timer to 0 when restart game
+      keys.setKeysCollected(0);
+      turtle.resetScore();
+      gameMaze.setMapGrid(1, 22, 'E');
+      gameMaze.setMapGrid(1, 23, 'E');
+      worms.setWorms();
+      keys.setKeys();
+      
+      
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -190,6 +206,10 @@ public class GameBoard extends JPanel implements ActionListener{
                             drawExit();
                           }
                         }  
+                        if(gameBarriers[nextVertPos][nextHorizPos] == 'G'){
+                          gameState = gameWinState;
+                          turtle.moveUp();
+                        }
               
                     if(gameBarriers[nextVertPos][nextHorizPos] == 'E'|| gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
@@ -330,8 +350,8 @@ public class GameBoard extends JPanel implements ActionListener{
 
   }
   public void drawExit(){
-    gameMaze.setMapGrid(0, 22, 'G');
-    gameMaze.setMapGrid(0, 23, 'G');
+    gameMaze.setMapGrid(1, 22, 'G');
+    gameMaze.setMapGrid(1, 23, 'G');
 
 
   }

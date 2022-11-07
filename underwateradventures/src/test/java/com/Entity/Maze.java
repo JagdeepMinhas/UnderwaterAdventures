@@ -20,7 +20,7 @@ public class Maze extends Entity  {
     //public char [][] mapGrid = new char [maxRow][maxCol];
     public  static char [][] mapGrid = {
         {'B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B'},
-        {'B','E','E','E','E','E','E','E','B','H','H','H','H','H','H','H','H','E','E','E','E','E','E','E','B'},
+        {'B','E','E','E','E','E','E','E','B','H','H','H','H','H','H','H','H','E','E','E','E','B','E','E','B'},
         {'B','E','E','B','B','E','E','S','E','E','E','B','E','E','E','B','E','E','C','E','E','E','E','E','B'},
         {'B','E','E','B','E','E','B','S','E','C','E','B','E','E','B','B','E','E','E','E','E','E','E','E','B'},
         {'B','E','E','E','E','E','B','S','E','E','E','B','E','E','B','E','E','E','E','B','B','B','B','B','B'},
