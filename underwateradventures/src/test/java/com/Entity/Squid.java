@@ -13,14 +13,19 @@ public class Squid extends Entity {
     int gridCol = 25;
     int tempX;
     int tempY;
+    boolean touched;
 
     public Squid(int x, int y){
         super();
         this.setxPosition(x);
         this.setyPosition(y);
     }
+    void setTouched(boolean value){
+        this.touched = value;
+        System.out.println("TOUCHED");
+    }
 
-void drawSquid(Graphics2D g){
+    void drawSquid(Graphics2D g){
     BufferedImage pic = null;
     try{
         pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSquid.png"));
@@ -43,6 +48,11 @@ void drawSquid(Graphics2D g){
         }
 
     }
+
+
+
+
+    
 
 
 

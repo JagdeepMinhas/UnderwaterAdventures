@@ -23,6 +23,15 @@ public class SquidController extends Entity {
             tempSquid.setSquid(g);
         }
  
-    }   
+    }  
+    
+    public void squidTouched(boolean touch, int x){
+        for(int i=0; i < squidList.size();i++){
+            if (x == squidList.get(i).getxPosition()){
+                tempSquid =  squidList.get(i);
+            }
+        }
+        tempSquid.setTouched(touch);
+    }
 
 }

@@ -278,6 +278,7 @@ public class GameBoard extends JPanel implements ActionListener{
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          squid.squidTouched(true, nextHorizPos * 40);
                           turtle.moveUp();
                         }
               
