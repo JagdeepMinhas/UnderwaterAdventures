@@ -20,7 +20,7 @@ public class ScubaController extends Entity {
     
      // constructor for ScubaController class
     public ScubaController(){
-        addScuba(new Scubadiver(680,80));
+        addScuba(new Scubadiver(980,80));
     }
 
     // method to reset scuba position

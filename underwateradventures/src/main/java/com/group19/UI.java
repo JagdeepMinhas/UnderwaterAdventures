@@ -11,13 +11,20 @@ import java.io.File;
 import java.io.IOException;
 import java.awt.FontFormatException;
 
+/** 
+* UI class is used to display different images on screen depending on the   gamestate (Gamoverscreen, Gamestartscreen and Restart game screen)
+ * @author Carol
+ * @since  October 2022
+ * @version 1.0 
+ */
+
 public class UI {
     
     GameBoard gb; 
     Font gameOver, arial_40;
     public int commandNum = 0;
     
-   
+   //Constructor 
     public UI(GameBoard gb){
       this.gb = gb;
 
@@ -31,6 +38,7 @@ public class UI {
 
     }
 
+    //method for drawing start game if user presses enter key
     public void drawGameStart (Graphics2D g){
       BufferedImage startbckgd = null;
       
@@ -69,6 +77,7 @@ public class UI {
       }
     }
     
+    //method for drawing game over screen once collision with moving enemy or become negative score
     public void drawGameOver (Graphics2D g){
       BufferedImage gameoverbckgd = null;
       if(gb.gameState == gb.gameOverState){
@@ -104,6 +113,7 @@ public class UI {
       }
     }
 
+    //method for drawing win screen once player obtains all keys and reaches end cell
     public void drawGameWin(Graphics2D g){
       BufferedImage gamewinbckgd = null;
       if(gb.gameState == gb.gameWinState){

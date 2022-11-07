@@ -5,9 +5,9 @@ import java.io.IOException;
 import javax.swing.JFrame;
 
 /**
- * Unit test for simple App.
+ * Main method for testing Underwater Adventures Gameplay.
  */
-public class AppTest {
+public class App {
 
     public static void main(String[]args) throws IOException{
         JFrame window = new JFrame();

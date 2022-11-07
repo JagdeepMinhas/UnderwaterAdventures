@@ -18,6 +18,17 @@ import javax.swing.Timer;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+* Gameboard class
+* The main container for all components of the game,
+* creates Entity objects that populate the Gameboard 
+*
+* @authors  Hazelle Lebumfacil, Tommy (Seahoun) Kim,
+* @authors Jagdeep Singh, Carol Yu
+* @version 1.0
+* @since   2022-Oct 
+*/
+
 public class GameBoard extends JPanel implements ActionListener{
     //cell size in characters (arbitrary)
     final int cellSize = 40;
@@ -97,7 +108,7 @@ public class GameBoard extends JPanel implements ActionListener{
     }
     
     
-
+    //method for setting up the game
     public void setupGame(){
       gameState = titleState;
     }
@@ -150,10 +161,11 @@ public class GameBoard extends JPanel implements ActionListener{
       }
     }
     
+    //method for resetting values once game restart
     public void restart(){
-      turtle.setDefaultPositions(40, 560); //Reset Turtle position when restart game
+      turtle.setDefaultPositions(40, 560); 
       sc.setDefaultPositions(680, 80);
-      playTime = 0; //Reset Timer to 0 when restart game
+      playTime = 0; 
       keys.setKeysCollected(0);
       turtle.resetScore();
       gameMaze.setMapGrid(1, 22, 'E');
@@ -162,6 +174,7 @@ public class GameBoard extends JPanel implements ActionListener{
       keys.setKeys();
     }
 
+    //method for gameloop updates
     public void actionPerformed(ActionEvent e) {
     
       moveTurtle();
@@ -170,7 +183,8 @@ public class GameBoard extends JPanel implements ActionListener{
       sc.update(turtle,gameMaze);
       repaint();
     }
-
+  
+  //method for turtle movement
   public void moveTurtle(){
     char [][] gameBarriers = gameMaze.getBarriers();
       
@@ -456,6 +470,8 @@ public class GameBoard extends JPanel implements ActionListener{
       }
 
   }
+
+  //method for drawing end cell when all keys are collected
   public void drawExit(){
     gameMaze.setMapGrid(1, 22, 'G');
     gameMaze.setMapGrid(1, 23, 'G');
