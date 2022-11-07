@@ -191,6 +191,7 @@ public class GameBoard extends JPanel implements ActionListener{
               if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                 if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                   turtle.moveUp();
+                  // turtle.setyPosition(turtle.getyPosition()-20);
                     }
                     else{
                       if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
@@ -200,6 +201,14 @@ public class GameBoard extends JPanel implements ActionListener{
                             gameMaze.setMapGrid(vertPos, horizPos, 'E');
                             turtle.moveUp();
                       }  
+
+                      if (gameBarriers[nextVertPos][nextHorizPos] == 'X'){
+                        int tempScore = turtle.getScore()+20;
+                          turtle.setScore(tempScore);
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveUp();
+                      } 
                       if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
                         int temp = keys.getKeysCollected()+1;
                           keys.setKeysCollected(temp);
@@ -253,6 +262,7 @@ public class GameBoard extends JPanel implements ActionListener{
               if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                 if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
                   turtle.moveDown();
+                  // turtle.setyPosition(turtle.getyPosition()+20);;
                     }else{
                       if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
                         int tempScore = turtle.getScore()+10;
@@ -261,6 +271,15 @@ public class GameBoard extends JPanel implements ActionListener{
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           turtle.moveDown();
                     }  
+
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'X'){
+                      int tempScore = turtle.getScore()+20;
+                        turtle.setScore(tempScore);
+                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                        turtle.moveUp();
+                    } 
+
                     if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
                       int temp = keys.getKeysCollected()+1;
                       keys.setKeysCollected(temp);
@@ -315,6 +334,7 @@ public class GameBoard extends JPanel implements ActionListener{
             if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
               if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                 if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  // turtle.setxPosition(turtle.getxPosition()-20);
                   turtle.moveLeft();
                     }else{
                       if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
@@ -324,6 +344,15 @@ public class GameBoard extends JPanel implements ActionListener{
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           turtle.moveLeft();
                     }  
+
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'X'){
+                      int tempScore = turtle.getScore()+20;
+                        turtle.setScore(tempScore);
+                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                        turtle.moveUp();
+                    } 
+
                     if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
                       int temp = keys.getKeysCollected()+1;
                       keys.setKeysCollected(temp);
@@ -370,6 +399,7 @@ public class GameBoard extends JPanel implements ActionListener{
             if(gameBarriers[nextVertPos][nextHorizPos] != 'B'){
               if( gameBarriers[nextVertPos][nextHorizPos] != 'C'){
                 if(gameBarriers[vertPos][horizPos] == 'S' || gameBarriers[nextVertPos][nextHorizPos] == 'S'){
+                  // turtle.setxPosition(turtle.getxPosition()+20);
                   turtle.moveRight();
                     }else{
                       if (gameBarriers[nextVertPos][nextHorizPos] == 'W'){
@@ -379,6 +409,15 @@ public class GameBoard extends JPanel implements ActionListener{
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           turtle.moveRight();
                     }  
+
+                    if (gameBarriers[nextVertPos][nextHorizPos] == 'X'){
+                      int tempScore = turtle.getScore()+20;
+                        turtle.setScore(tempScore);
+                        gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                        gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                        turtle.moveUp();
+                    }
+
                     if (gameBarriers[nextVertPos][nextHorizPos] == 'K'){
                       int temp = keys.getKeysCollected()+1;
                         keys.setKeysCollected(temp);

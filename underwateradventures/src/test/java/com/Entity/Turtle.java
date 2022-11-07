@@ -118,8 +118,7 @@ public class Turtle extends Entity  {
         }    
      }
 
-    
-    
+
      
     public void draw(Graphics2D g){
         BufferedImage pic = null;
