@@ -23,7 +23,7 @@ public class Turtle extends Entity  {
 
     public Turtle(GameBoard gb){
         super();
-        this.score=0;
+        this.score=30;
         this.setxPosition(entitySize);   
         this.setyPosition(560);
         this.gb = gb;

@@ -185,6 +185,11 @@ public class GameBoard extends JPanel implements ActionListener{
                             turtle.moveUp();
                           }  
                           if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                            int tempScore = turtle.getScore()-20;
+                            turtle.setScore(tempScore);
+                            if (tempScore < 0){
+                              gameState = gameOverState;
+                            }
                             gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                             gameMaze.setMapGrid(vertPos, horizPos, 'E');
                             squid.squidTouched(true, nextVertPos * 40);
@@ -234,6 +239,11 @@ public class GameBoard extends JPanel implements ActionListener{
                         }  
 
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          int tempScore = turtle.getScore()-20;
+                          turtle.setScore(tempScore);
+                          if (tempScore < 0){
+                            gameState = gameOverState;
+                          }
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           squid.squidTouched(true, nextVertPos * 40);
@@ -279,6 +289,11 @@ public class GameBoard extends JPanel implements ActionListener{
                         }  
 
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          int tempScore = turtle.getScore()-20;
+                          turtle.setScore(tempScore);
+                          if (tempScore < 0){
+                            gameState = gameOverState;
+                          }
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           squid.squidTouched(true, nextVertPos * 40);
@@ -324,6 +339,11 @@ public class GameBoard extends JPanel implements ActionListener{
                         }  
 
                         if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          int tempScore = turtle.getScore()-20;
+                          turtle.setScore(tempScore);
+                          if (tempScore < 0){
+                            gameState = gameOverState;
+                          }
                           gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           squid.squidTouched(true, nextVertPos * 40);
