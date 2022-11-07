@@ -13,7 +13,7 @@ import com.Entity.Maze;
 
 public class RegualrRewards extends Entity {
     int tempX,tempY;
-    final int NO_Of_KEYS=8;
+    private final int NO_Of_KEYS=6;
     public int gridRow = 16;
     public int gridCol = 25;
     private int keysCollected;
@@ -27,9 +27,9 @@ public class RegualrRewards extends Entity {
         setKeys();
     }
 
-    
-      
-
+    public int getTotalKeys(){
+        return NO_Of_KEYS;
+    }
     public int getKeysCollected() {
     return keysCollected;
 }

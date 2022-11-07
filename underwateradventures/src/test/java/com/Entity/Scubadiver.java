@@ -11,7 +11,7 @@ import java.util.*;
 
 public class Scubadiver extends Entity  {
     
-    int speed = entitySize;
+    int speed = entitySize/2;
     final static int UP = 0;
     final static int DOWN = 1;
     final static int LEFT = 2;

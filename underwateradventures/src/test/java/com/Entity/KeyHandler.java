@@ -40,6 +40,13 @@ public class KeyHandler implements KeyListener{
                 gb.restart();
             }
         }
+        if(gb.gameState == gb.gameWinState){
+
+            if(keyCode == KeyEvent.VK_ENTER){
+                gb.gameState = gb.playState;
+                gb.restart();
+            }
+        }
 
         if(gb.gameState == gb.playState){
 
