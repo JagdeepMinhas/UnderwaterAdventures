@@ -7,6 +7,7 @@ import com.Entity.SharkController;
 import com.Entity.KeyHandler;
 import com.Entity.Maze;
 import com.Entity.ScubaController;
+import com.Entity.SquidController;
 import javax.imageio.*;
 import java.io.File;
 import java.io.IOException;
@@ -52,6 +53,7 @@ public class GameBoard extends JPanel implements ActionListener{
     private BonusRewards worms;
     public Turtle turtle = new Turtle(this);
     Maze gameMaze;
+    SquidController squid;
 
     // GameBoard constructor 
     BufferedImage myPicture =null;
@@ -86,6 +88,8 @@ public class GameBoard extends JPanel implements ActionListener{
           keys = new RegualrRewards();
           worms = new BonusRewards();
           gameMaze = new Maze();
+          squid = new SquidController();
+
 
           
            
@@ -132,6 +136,7 @@ public class GameBoard extends JPanel implements ActionListener{
         gameMaze.draw(g2);
         keys.draw(g2);
         worms.draw(g2);
+        squid.draw(g2);
         g2.dispose();
       }
     }
@@ -178,6 +183,12 @@ public class GameBoard extends JPanel implements ActionListener{
                             gameMaze.setMapGrid(vertPos, horizPos, 'E');
                             turtle.moveUp();
                           }  
+                          if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                            gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                            gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                            turtle.moveUp();
+                          }
+                      
                 
                       if(gameBarriers[nextVertPos][nextHorizPos] == 'E'|| gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                         gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
@@ -219,6 +230,12 @@ public class GameBoard extends JPanel implements ActionListener{
                         gameMaze.setMapGrid(vertPos, horizPos, 'E');
                         turtle.moveDown();
                         }  
+
+                        if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveUp();
+                        }
               
                     if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
@@ -257,6 +274,12 @@ public class GameBoard extends JPanel implements ActionListener{
                         gameMaze.setMapGrid(vertPos, horizPos, 'E');
                         turtle.moveLeft();
                         }  
+
+                        if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveUp();
+                        }
               
                     if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
@@ -295,6 +318,12 @@ public class GameBoard extends JPanel implements ActionListener{
                           gameMaze.setMapGrid(vertPos, horizPos, 'E');
                           turtle.moveRight();
                         }  
+
+                        if(gameBarriers[nextVertPos][nextHorizPos] == 'Q'){
+                          gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
+                          gameMaze.setMapGrid(vertPos, horizPos, 'E');
+                          turtle.moveUp();
+                        }
               
                     if(gameBarriers[nextVertPos][nextHorizPos] == 'E' || gameBarriers[nextVertPos][nextHorizPos] == 'H'){
                       gameMaze.setMapGrid(nextVertPos, nextHorizPos, 'T');
