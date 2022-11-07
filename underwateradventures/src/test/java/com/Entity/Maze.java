@@ -9,6 +9,17 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 
+/**
+* The Maze class (extends from Entity)
+* keeps track of all moving
+* and stationary entity positions on the Gameboard.
+* Methods created to display the Maze on the JFrame
+*
+* @author  Hazelle Lebumfacil
+* @collaborator Tommy Kim 
+* @version 1.0
+* @since   2022-Oct 
+*/
 
 public class Maze extends Entity  {
 
@@ -38,25 +49,28 @@ public class Maze extends Entity  {
     };
 
     
-
+    //method to return barriers array
     public char [][] getBarriers(){
         return mapGrid;
     }
 
+    //method to get value at index of MapGrid
     public char getMapGrid(int x, int y){
         return mapGrid[x][y];
     }
 
+    //method to set value of index of MapGrid
     public void setMapGrid(int x, int y, char value){
         mapGrid[x][y] = value;
     }
 
-
+    //constructor for Maze Class
     public Maze() {
         this.setxPosition(0);
         this.setyPosition(0);
     }
 
+    //method to draw Rock Image
     void drawRock(Graphics2D g){
         BufferedImage pic = null;
         try {
@@ -70,6 +84,7 @@ public class Maze extends Entity  {
 
     }
 
+    //method to draw Coral Image 
     void drawCoral(Graphics2D g){
         BufferedImage pic = null;
         try {
@@ -83,6 +98,7 @@ public class Maze extends Entity  {
 
     }
 
+    //method to draw Seaweed Image
     void drawSeaweed(Graphics2D g){
         BufferedImage pic = null;
         try {
@@ -95,6 +111,8 @@ public class Maze extends Entity  {
         g.drawImage(pic, tempX, tempY,40,40, null);
 
     }
+
+    //Method to draw Exit Gate
     void drawExitGate(Graphics2D g){
         BufferedImage pic = null;
         try {
@@ -108,7 +126,7 @@ public class Maze extends Entity  {
 
     }
 
-
+    //Method that draws mapGrid array on jframe (handles logic)
     public void draw(Graphics2D g) {
 
         

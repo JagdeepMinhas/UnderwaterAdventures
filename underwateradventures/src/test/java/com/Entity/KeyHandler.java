@@ -2,15 +2,21 @@
 package com.Entity;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-
 import com.group19.GameBoard;
+
+/**
+ * This class implements keylsitener interface to listen to the user key inputs
+ * @author Jagdeep SINGH
+ * @version 1.0
+ * @since octobe 2022
+ */
 public class KeyHandler implements KeyListener{
 
     GameBoard gb;
 
     public boolean upPressed, downPressed,leftPressed, rightPressed,keyEnter;
     
-    
+    //constructor for keyhandler class
     public KeyHandler(GameBoard gb){
         this.gb = gb;
     }
@@ -20,8 +26,6 @@ public class KeyHandler implements KeyListener{
         
     }
 
-
-   
     @Override
     public void keyPressed(KeyEvent e) {
         int keyCode = e.getKeyCode();

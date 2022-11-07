@@ -6,6 +6,16 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.time.*;
 
+/**
+* The Squid class (extends from Entity)
+* Methods to display the squid and perform the 
+* punishment functionality of the game.
+*
+* @author  Hazelle Lebumfacil
+* @version 1.0
+* @since   2022-Oct 
+*/
+
 public class Squid extends Entity {
 
     char squidChar = 'Q';
@@ -17,17 +27,21 @@ public class Squid extends Entity {
     public boolean touched;
     public long time_stamp = 0;
 
+    // constructor for Squid Class
     public Squid(int x, int y){
         super();
         this.setxPosition(x);
         this.setyPosition(y);
         this.touched = false;
     }
+
+    // method to change touched attribute for Squid
     void setTouched(boolean value){
         this.touched = value;
     }
 
 
+    // method to display squid on JFrame
     void drawSquid(Graphics2D g){
     BufferedImage pic = null;
     try{
@@ -39,6 +53,7 @@ public class Squid extends Entity {
     g.drawImage(pic,tempX,tempY,40,40,null);
 }
 
+     //Method that draws squid based on mapGrid array on jframe (handles logic)
     void setSquid(Graphics2D g){
         for(int i=0; i<gridRow;i++){
             for(int j=0; j<gridCol; j++){
@@ -52,7 +67,7 @@ public class Squid extends Entity {
 
     }
 
-
+    // method to display punishment 
     void drawInk(Graphics2D g){
         Clock clock = Clock.systemDefaultZone();
         long inkTimeOn = clock.millis() - time_stamp;

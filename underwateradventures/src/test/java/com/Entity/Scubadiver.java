@@ -9,6 +9,17 @@ import java.awt.image.BufferedImage;
 import java.lang.Math;
 import java.util.*;
 
+/**
+* The Scuba Class (extends from Entity)
+* creates a Scuba object and allows the Scuba
+* to follow the main character (Turtle) on the game board. Sets the bounds
+* that will be used to check collision with the main character (Turtle)
+*
+* @author    Tommy (Seahoun) Kim, Hazelle Lebumfacil
+* @version   1.0
+* @since     2022-Oct
+*/
+
 public class Scubadiver extends Entity  {
     
     int speed = entitySize/2;
@@ -22,18 +33,21 @@ public class Scubadiver extends Entity  {
 
     ArrayList < Integer > movesList = new ArrayList < Integer > ();
     
+    //constructor for Scubadiver class
     public Scubadiver(){
         super();
         this.setxPosition(200);
         this.setyPosition(200);
     }
 
+    // constructor for Scuba class, parameters for setting position
     public Scubadiver(int x, int y){
         super();
         this.setxPosition(x);
         this.setyPosition(y);
     }
     
+    //method for getting bounds (collision handling)
     public Rectangle getBounds(){
         return new Rectangle(this.getxPosition(), this.getyPosition(), 40, 40);
     } 
@@ -43,6 +57,7 @@ public class Scubadiver extends Entity  {
         this.setyPosition(y);
     }
 
+    // method for updating scuba movement
     public void update(Turtle t, Maze m){
         int turtleXPos = t.getxPosition();
         int turtleYPos = t.getyPosition();
@@ -87,6 +102,7 @@ public class Scubadiver extends Entity  {
 
     }
 
+    //method to find all valid moves based on current position
     void getValidMoves(char [][] b, Maze m ){
        for(int i=0; i < 4; i++){
             if(this.isMoveValid(b, i, m)){
@@ -97,6 +113,7 @@ public class Scubadiver extends Entity  {
        }
     }
 
+    //method to check if a move is valid for the scuba object
     boolean isMoveValid(char[][] b,int direction, Maze m){
         
         if(direction == UP){
@@ -195,7 +212,7 @@ public class Scubadiver extends Entity  {
         return false;
     }
     
-    
+    //method for drawing scuba image
     public void draw(Graphics2D g){
         BufferedImage scubadiverPic = null;
         try {
