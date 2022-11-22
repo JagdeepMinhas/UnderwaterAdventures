@@ -25,7 +25,7 @@ public class ScubaController extends Entity {
 
     // method to reset scuba position
     public void setDefaultPositions(int x, int y) {
-        TempScuba.setDefaultPositions(680, 80);
+        TempScuba.setDefaultPositions(980, 80);
     }
 
     // method for drawing all scuba images

@@ -128,7 +128,20 @@ public class Scubadiver extends Entity  {
                         if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
                         if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
-                        }else{
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'W' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'W'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'X' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'X'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'K' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'Q' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'Q'){
+                            return true;
+                        }
+                        else{
                             Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
                             Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
@@ -151,7 +164,20 @@ public class Scubadiver extends Entity  {
                         if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
                         if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
-                        }else{
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'W' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'W'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'X' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'X'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'K' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'Q' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'Q'){
+                            return true;
+                        }
+                        else{
                             Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
                             Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
@@ -173,7 +199,20 @@ public class Scubadiver extends Entity  {
                         if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
                         if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
-                        }else{
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'W' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'W'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'X' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'X'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'K' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'){
+                            return true;
+                        }
+                        if(Maze.mapGrid[vertPos][horizPos] == 'Q' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'Q'){
+                            return true;
+                        }
+                        else{
                             Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
                             Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
@@ -197,7 +236,20 @@ public class Scubadiver extends Entity  {
                     if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
                     if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                         return true;
-                    }else{
+                    }
+                    if(Maze.mapGrid[vertPos][horizPos] == 'W' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'W'){
+                        return true;
+                    }
+                    if(Maze.mapGrid[vertPos][horizPos] == 'X' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'X'){
+                        return true;
+                    }
+                    if(Maze.mapGrid[vertPos][horizPos] == 'K' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'){
+                        return true;
+                    }
+                    if(Maze.mapGrid[vertPos][horizPos] == 'Q' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'Q'){
+                        return true;
+                    }
+                    else{
                         Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
                             Maze.mapGrid[vertPos][horizPos]= 'E';
                         return true;

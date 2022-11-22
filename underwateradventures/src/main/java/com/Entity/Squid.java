@@ -40,7 +40,6 @@ public class Squid extends Entity {
         this.touched = value;
     }
 
-
     // method to display squid on JFrame
     void drawSquid(Graphics2D g){
     BufferedImage pic = null;

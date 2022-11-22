@@ -5,6 +5,7 @@ import com.Entity.Turtle;
 import com.Rewards.BonusRewards;
 import com.Rewards.RegualrRewards;
 import com.Entity.SharkController;
+import com.Entity.Squid;
 import com.Entity.KeyHandler;
 import com.Entity.Maze;
 import com.Entity.ScubaController;
@@ -148,7 +149,7 @@ public class GameBoard extends JPanel implements ActionListener {
   // method for resetting values once game restart
   public void restart() {
     turtle.setDefaultPositions(40, 560);
-    sc.setDefaultPositions(680, 80);
+    sc.setDefaultPositions(980, 80);
     playTime = 0;
     keys.setKeysCollected(0);
     turtle.resetScore();
@@ -198,7 +199,7 @@ public class GameBoard extends JPanel implements ActionListener {
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveUp();
             }
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K' || Maze.mapGrid[vertPos][horizPos] == 'K') {
               encounteredKey();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               ;
@@ -215,7 +216,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveUp();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'P') {
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               ;
               turtle.moveUp();
@@ -247,10 +248,10 @@ public class GameBoard extends JPanel implements ActionListener {
             if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
-              turtle.moveUp();
+              turtle.moveDown();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'|| Maze.mapGrid[vertPos][horizPos] == 'K') {
               encounteredKey();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveDown();
@@ -262,7 +263,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveDown();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'P') {
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveDown();
             }
@@ -280,7 +281,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
       if (nextHorizPos > min) {
         if (Maze.mapGrid[nextVertPos][nextHorizPos] != 'B' && Maze.mapGrid[nextVertPos][nextHorizPos] != 'C') {
-          if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'S') {
+          if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'|| Maze.mapGrid[vertPos][horizPos] == 'S') {
             turtle.moveLeft();
           } else {
             if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'W') {
@@ -292,10 +293,10 @@ public class GameBoard extends JPanel implements ActionListener {
             if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
-              turtle.moveUp();
+              turtle.moveLeft();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'|| Maze.mapGrid[vertPos][horizPos] == 'K') {
               encounteredKey();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveLeft();
@@ -307,7 +308,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveLeft();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'P') {
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveLeft();
             }
@@ -325,7 +326,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
       if (nextHorizPos < horizMax) {
         if (Maze.mapGrid[nextVertPos][nextHorizPos] != 'B' && Maze.mapGrid[nextVertPos][nextHorizPos] != 'C') {
-          if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'S') {
+          if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'S' || Maze.mapGrid[vertPos][horizPos] == 'S') {
             turtle.moveRight();
           } else {
             if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'W') {
@@ -337,10 +338,10 @@ public class GameBoard extends JPanel implements ActionListener {
             if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
-              turtle.moveUp();
+              turtle.moveRight();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'K'|| Maze.mapGrid[vertPos][horizPos] == 'K') {
               encounteredKey();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveRight();
@@ -352,7 +353,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveRight();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'E' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'H' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'P') {
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveRight();
             }
@@ -401,7 +402,7 @@ public class GameBoard extends JPanel implements ActionListener {
   // method for drawing end cell when all keys are collected
   public void drawExit() {
     Maze.mapGrid[1][22] = 'G';
-    Maze.mapGrid[1][22] = 'G';
+    Maze.mapGrid[1][23] = 'G';
   }
 
 }

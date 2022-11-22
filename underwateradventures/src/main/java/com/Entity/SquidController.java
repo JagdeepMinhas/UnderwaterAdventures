@@ -23,9 +23,11 @@ public class SquidController extends Entity {
         addSquid(new Squid(800,480));
     }
     //method to add squid to list for maintaining number of squid objects 
+    
     void addSquid(Squid squid){
         squidList.add(squid);
     }
+
     //method to draw all squid objects
     public void draw(Graphics2D g){
         for(int i=0; i < squidList.size();i++){
