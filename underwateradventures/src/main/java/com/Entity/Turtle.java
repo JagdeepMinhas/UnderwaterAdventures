@@ -100,7 +100,7 @@ public class Turtle extends Entity  {
            return;
        }
        else{
-           this.setyPosition(this.getyPosition()-entitySize);
+           this.setyPosition(this.getyPosition()-speed);
        }    
     }
 
@@ -110,7 +110,7 @@ public class Turtle extends Entity  {
             return;
         }
         else{
-            this.setyPosition(this.getyPosition()+entitySize);
+            this.setyPosition(this.getyPosition()+speed);
         }    
      }
 

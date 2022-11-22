@@ -57,7 +57,7 @@ public class Squid extends Entity {
     void setSquid(Graphics2D g){
         for(int i=0; i<gridRow;i++){
             for(int j=0; j<gridCol; j++){
-                if(maze.getMapGrid(i,j) == 'Q'){
+                if(Maze.mapGrid[i][j] == 'Q'){
                     tempX = j * entitySize;
                     tempY = i * entitySize;
                     drawSquid(g);

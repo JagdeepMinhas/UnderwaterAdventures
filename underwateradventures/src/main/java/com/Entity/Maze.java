@@ -22,6 +22,10 @@ import javax.imageio.ImageIO;
 */
 
 public class Maze extends Entity  {
+    BufferedImage rockImg = null;
+    BufferedImage coralImg = null;
+    BufferedImage seaweedImg  = null;
+    BufferedImage exitGImage  = null;
 
     int tempX;
     int tempY;
@@ -49,80 +53,55 @@ public class Maze extends Entity  {
     };
 
     
-    //method to return barriers array
-    public char [][] getBarriers(){
-        return mapGrid;
-    }
+   
+    
 
-    //method to get value at index of MapGrid
-    public char getMapGrid(int x, int y){
-        return mapGrid[x][y];
-    }
+   
 
-    //method to set value of index of MapGrid
-    public void setMapGrid(int x, int y, char value){
-        mapGrid[x][y] = value;
-    }
+    
 
     //constructor for Maze Class
     public Maze() {
         this.setxPosition(0);
         this.setyPosition(0);
+        getImages();
     }
-
-    //method to draw Rock Image
-    void drawRock(Graphics2D g){
-        BufferedImage pic = null;
+    public void getImages(){
         try {
-            pic = ImageIO.read(new File("Resources/Images/Barrier/BarrierRock2.png"));
+            rockImg = ImageIO.read(new File("Resources/Images/Barrier/BarrierRock2.png"));
+            coralImg = ImageIO.read(new File("Resources/Images/Barrier/BarrierCoral.png"));
+            seaweedImg = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSeaweed.png"));
+            exitGImage = ImageIO.read(new File("Resources/Images/ExitGate/NicePng_gate-png_613378.png"));
      
            } catch (IOException ex) {
              System.err.println("Could not load image");
            }
- 
-        g.drawImage(pic, tempX, tempY,40,40, null);
+
+    }
+    //method to draw Rock Image
+    void drawRock(Graphics2D g){
+       
+        g.drawImage(rockImg, tempX, tempY,40,40, null);
 
     }
 
     //method to draw Coral Image 
     void drawCoral(Graphics2D g){
-        BufferedImage pic = null;
-        try {
-            pic = ImageIO.read(new File("Resources/Images/Barrier/BarrierCoral.png"));
-     
-           } catch (IOException ex) {
-             System.err.println("Could not load image");
-           }
- 
-        g.drawImage(pic, tempX, tempY,40,40, null);
+        
+        g.drawImage(coralImg, tempX, tempY,40,40, null);
 
     }
 
     //method to draw Seaweed Image
     void drawSeaweed(Graphics2D g){
-        BufferedImage pic = null;
-        try {
-            pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSeaweed.png"));
-     
-           } catch (IOException ex) {
-             System.err.println("Could not load image");
-           }
  
-        g.drawImage(pic, tempX, tempY,40,40, null);
+        g.drawImage(seaweedImg, tempX, tempY,40,40, null);
 
     }
 
     //Method to draw Exit Gate
     void drawExitGate(Graphics2D g){
-        BufferedImage pic = null;
-        try {
-            pic = ImageIO.read(new File("Resources/Images/ExitGate/NicePng_gate-png_613378.png"));
-     
-           } catch (IOException ex) {
-             System.err.println("Could not load image");
-           }
- 
-        g.drawImage(pic, tempX, tempY,40,40, null);
+        g.drawImage(exitGImage, tempX, tempY,40,40, null);
 
     }
 

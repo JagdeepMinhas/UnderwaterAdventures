@@ -16,12 +16,14 @@ import com.Entity.Maze;
  * @since October 2022 
 */
 
+
 public class RegualrRewards extends Entity {
     int tempX,tempY;
     private final int NO_Of_KEYS=6;
     public int gridRow = 16;
     public int gridCol = 25;
     private int keysCollected;
+    BufferedImage keyImg =null;
     
 
     Maze maze = new Maze();
@@ -30,8 +32,19 @@ public class RegualrRewards extends Entity {
    public RegualrRewards(){
         keysCollected=0;
         setKeys();
+        getImage();
     }
 
+    public void getImage(){
+       
+        try {
+            keyImg = ImageIO.read(new File("Resources/Images/Reward/RewardKey.png"));
+
+        } catch (IOException ex) {
+            System.err.println("Could not load image");
+        }
+
+    }
     //method for returning private variable of total number of keys
     public int getTotalKeys(){
         return NO_Of_KEYS;
@@ -49,15 +62,8 @@ public void setKeysCollected(int keysCollected) {
 
     //method for drawing keys
     public void drawKeys(Graphics2D g) {
-        BufferedImage pic = null;
-        try {
-            pic = ImageIO.read(new File("Resources/Images/Reward/RewardKey.png"));
 
-        } catch (IOException ex) {
-            System.err.println("Could not load image");
-        }
-        
-        g.drawImage(pic, tempX, tempY, 40, 40, null);
+        g.drawImage(keyImg, tempX, tempY, 40, 40, null);
     }
 
     //method for setting keys on random Empty cells
@@ -68,8 +74,8 @@ public void setKeysCollected(int keysCollected) {
             
             int randomCol = (int) (Math.random() * (gridCol));
            
-            if ((maze.getMapGrid(randomRow,randomCol) == 'E')){
-                maze.setMapGrid(randomRow, randomCol, 'K'); 
+            if ((Maze.mapGrid[randomRow][randomCol]  == 'E')){
+                Maze.mapGrid[randomRow][randomCol] ='K'; 
                 i++;
             }
         }
@@ -83,7 +89,7 @@ public void setKeysCollected(int keysCollected) {
 
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
-                if(maze.getMapGrid(i, j) =='K' ){
+                if(Maze.mapGrid[i][j]  =='K' ){
                     tempX = j * 40;
                     tempY = i * 40;
                     drawKeys(g);

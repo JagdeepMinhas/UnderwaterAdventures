@@ -64,7 +64,7 @@ public class Scubadiver extends Entity  {
         int diffY = Math.abs(turtleYPos - this.getyPosition());
         int diffX = Math.abs(turtleXPos - this.getxPosition());
    
-        this.getValidMoves(m.getBarriers(), m);
+        this.getValidMoves();
         if(diffX>diffY){
            
             for(int i=0; i < movesList.size(); i++){
@@ -103,9 +103,9 @@ public class Scubadiver extends Entity  {
     }
 
     //method to find all valid moves based on current position
-    void getValidMoves(char [][] b, Maze m ){
+    void getValidMoves( ){
        for(int i=0; i < 4; i++){
-            if(this.isMoveValid(b, i, m)){
+            if(this.isMoveValid(i)){
                 movesList.add(i);
             }else{
                 movesList.add(5);
@@ -114,7 +114,7 @@ public class Scubadiver extends Entity  {
     }
 
     //method to check if a move is valid for the scuba object
-    boolean isMoveValid(char[][] b,int direction, Maze m){
+    boolean isMoveValid(int direction){
         
         if(direction == UP){
             int nextVertPos = this.getyPosition()/40 - 1;
@@ -123,14 +123,14 @@ public class Scubadiver extends Entity  {
             int horizPos = this.getxPosition()/40;
 
             if(nextVertPos > min){
-                if(b[nextVertPos][nextHorizPos] != 'B'){
-                    if( b[nextVertPos][nextHorizPos] != 'C'){
-                        if( b[nextVertPos][nextHorizPos] != 'H'){
-                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'B'){
+                    if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'C'){
+                        if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
+                        if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
                         }else{
-                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
-                            m.setMapGrid(vertPos, horizPos, 'E');
+                            Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
+                            Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
                         }
                     }
@@ -146,14 +146,14 @@ public class Scubadiver extends Entity  {
           int horizPos = this.getxPosition()/40;
 
           if(nextVertPos > min){
-                if(b[nextVertPos][nextHorizPos] != 'B'){
-                    if( b[nextVertPos][nextHorizPos] != 'C'){
-                        if( b[nextVertPos][nextHorizPos] != 'H'){
-                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'B'){
+                    if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'C'){
+                        if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
+                        if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
                         }else{
-                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
-                            m.setMapGrid(vertPos, horizPos, 'E');
+                            Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
+                            Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
                         }
                     }
@@ -168,14 +168,14 @@ public class Scubadiver extends Entity  {
             int horizPos = this.getxPosition()/40;
 
             if(nextHorizPos < horizMax){
-                if(b[nextVertPos][nextHorizPos] != 'B'){
-                    if(b[nextVertPos][nextHorizPos] != 'C'){
-                        if( b[nextVertPos][nextHorizPos] != 'H'){
-                        if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'B'){
+                    if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'C'){
+                        if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
+                        if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                             return true;
                         }else{
-                            m.setMapGrid(nextVertPos, nextHorizPos, 'P');
-                            m.setMapGrid(vertPos, horizPos, 'E');
+                            Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
+                            Maze.mapGrid[vertPos][horizPos]= 'E';
                             return true;
                         }
                     }
@@ -192,14 +192,14 @@ public class Scubadiver extends Entity  {
             int horizPos = this.getxPosition()/40;
 
             if(nextHorizPos > min){
-                if(b[nextVertPos][nextHorizPos] != 'B'){
-                  if(b[nextVertPos][nextHorizPos] != 'C'){
-                    if( b[nextVertPos][nextHorizPos] != 'H'){
-                    if(b[vertPos][horizPos] == 'S' || b[nextVertPos][nextHorizPos] == 'S'){
+                if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'B'){
+                  if(Maze.mapGrid[nextVertPos][nextHorizPos] != 'C'){
+                    if( Maze.mapGrid[nextVertPos][nextHorizPos] != 'H'){
+                    if(Maze.mapGrid[vertPos][horizPos] == 'S' || Maze.mapGrid[nextVertPos][nextHorizPos] == 'S'){
                         return true;
                     }else{
-                        m.setMapGrid(nextVertPos, nextHorizPos, 'P');
-                        m.setMapGrid(vertPos, horizPos, 'E');
+                        Maze.mapGrid[nextVertPos][ nextHorizPos]= 'P';
+                            Maze.mapGrid[vertPos][horizPos]= 'E';
                         return true;
                     }
                 }
