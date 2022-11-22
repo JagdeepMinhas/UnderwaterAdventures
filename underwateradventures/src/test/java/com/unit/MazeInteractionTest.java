@@ -11,12 +11,13 @@ public class MazeInteractionTest {
     Turtle turtleTest;
     Maze mazeTest;
     KeyHandler keyTest;
-    GameBoard gbTest;
+    Scubadiver scubaTest;
 
     // test how a barrier and the turtle interact 
     @Test 
     public void testTurtleInteract()  throws IOException 
-    {
+    {   
+        GameBoard gbTest = new GameBoard();
         gbTest = new GameBoard();
         keyTest = new KeyHandler(gbTest);
         mazeTest = new Maze();
@@ -27,14 +28,24 @@ public class MazeInteractionTest {
         keyTest.downPressed = true;
 
         //the turtle should not have moved down
-        assertNotSame(600, turtleTest.getyPosition());
-        
+        assertNotSame(600, turtleTest.getyPosition());    
     }
 
 
     // barrier + scuba 
+    @Test
+    public void testScubaInteract()  throws IOException 
+    {
+        //  mazeTest = new Maze();
+        //  scubaTest = new Scubadiver(980, 80);
+        //  turtleTest = new Turtle(980, 160);
+        //  //barrier situated at 980, 120
+        //  scubaTest.update(turtleTest, mazeTest);
+        // // //the scuba should not have moved down
+        //  assertNotSame(120, scubaTest.getyPosition());    
+    }
 
     // barrier + turtle + scuba (reach for same cell)
 
-    //
+    
 }
