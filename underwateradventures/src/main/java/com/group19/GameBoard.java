@@ -194,7 +194,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveUp();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X' && worms.shrimp_appear()) {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveUp();
@@ -245,7 +245,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveDown();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X' && worms.shrimp_appear()) {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveDown();
@@ -290,7 +290,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveLeft();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X' && worms.shrimp_appear()) {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveLeft();
@@ -335,7 +335,7 @@ public class GameBoard extends JPanel implements ActionListener {
               turtle.moveRight();
             }
 
-            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X') {
+            if (Maze.mapGrid[nextVertPos][nextHorizPos] == 'X' && worms.shrimp_appear()) {
               encounteredShrimp();
               updateMapGrid(nextVertPos, nextHorizPos, vertPos, horizPos);
               turtle.moveRight();
