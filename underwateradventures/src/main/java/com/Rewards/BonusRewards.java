@@ -27,10 +27,10 @@ public class BonusRewards extends Entity {
     BufferedImage shrimpImg =null;
     BufferedImage worImage =null;
 
-    long begin = 2000; 
-    long end = 4000;
+    int start = 2000;
+    int end = 4000; // every 4s
     long time_stamp = 0;
-    boolean appear = true;
+    boolean appear;
     
     Maze maze = new Maze();
 
@@ -99,18 +99,19 @@ public class BonusRewards extends Entity {
     }
 
     public boolean shrimp_appear(){
-        if( appear == !appear){
+        if(appear == false){
             return false;
         }
         return true;
     }
-
+    
 
     //Method that draws Bonus Rewards on jframe (handles logic)
     public void draw(Graphics2D g) {
 
-        long time_passed = (long) (System.currentTimeMillis() - time_stamp);
-
+        long time_passed = (System.currentTimeMillis() - time_stamp);
+        //  appear = true;
+        
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
                 if(Maze.mapGrid[i][j] =='W' ){
@@ -121,22 +122,24 @@ public class BonusRewards extends Entity {
 
                 }
 
-                if (begin < time_passed && time_passed < end && appear) {
+                
+
+                if ( (start < time_passed && time_passed < end )) {
+                    appear = true;
                     if(Maze.mapGrid[i][j]  == 'X' ){
                         tempX = j * 40;
                         tempY = i * 40;
-
+                        // maze.draw(g);
                         drawShrimps(g);
                     }
                 }
                 else if (time_passed >= end) {
-                    time_stamp = (long) (System.currentTimeMillis());
-                    appear = !appear;
+                    time_stamp = (System.currentTimeMillis());
+                    appear = false;
                 }
             }
         }
     }
-
 }
 
 
