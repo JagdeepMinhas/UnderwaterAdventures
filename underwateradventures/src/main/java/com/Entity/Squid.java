@@ -42,15 +42,15 @@ public class Squid extends Entity {
 
     // method to display squid on JFrame
     void drawSquid(Graphics2D g){
-    BufferedImage pic = null;
-    try{
-        pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSquid.png"));
-    } catch (IOException ex) {
-        System.err.println("Could not load image");
+        BufferedImage pic = null;
+        try{
+            pic = ImageIO.read(new File("Resources/Images/Punishment/PunishmentSquid.png"));
+        } catch (IOException ex) {
+            System.err.println("Could not load image");
+        }
+        
+        g.drawImage(pic,tempX,tempY,40,40,null);
     }
-    
-    g.drawImage(pic,tempX,tempY,40,40,null);
-}
 
      //Method that draws squid based on mapGrid array on jframe (handles logic)
     void setSquid(Graphics2D g){

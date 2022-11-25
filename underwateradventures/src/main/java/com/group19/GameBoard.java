@@ -158,6 +158,7 @@ public class GameBoard extends JPanel implements ActionListener {
     keys.keyCleanUp();
     worms.setWorms();
     keys.setKeys();
+    squid.squidRestart();
   }
 
   // method for gameloop updates
