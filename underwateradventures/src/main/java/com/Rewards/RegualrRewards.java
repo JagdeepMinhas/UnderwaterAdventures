@@ -79,7 +79,17 @@ public void setKeysCollected(int keysCollected) {
                 i++;
             }
         }
+    }
 
+    public void keyCleanUp()
+    {
+        for (int i = 0; i < gridRow; i++) {
+            for (int j = 0; j < gridCol; j++) {
+                if(Maze.mapGrid[i][j]  =='K' ){
+                    Maze.mapGrid[i][j] = 'E';
+                }
+            }
+        }
 
     }
 
