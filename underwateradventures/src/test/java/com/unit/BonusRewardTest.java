@@ -39,7 +39,7 @@ public class BonusRewardTest {
 
     @Test 
     public void setSWorms(){
-        // brTest = new BonusRewards();
+        
         brTest.setWorms();
         int wRow =  findReward_row(Maze.mapGrid, 16, 25, 'W');
         int wCol = findReward_col(Maze.mapGrid, 16, 25, 'W');

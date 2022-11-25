@@ -374,8 +374,10 @@ public class GameBoard extends JPanel implements ActionListener {
   }
 
   public void encounteredShrimp() {
-    int tempScore = turtle.getScore() + 20;
-    turtle.setScore(tempScore);
+    if(worms.shrimp_appear()){
+      int tempScore = turtle.getScore() + 20;
+      turtle.setScore(tempScore);
+    }
   }
 
   public void encounteredKey() {

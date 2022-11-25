@@ -110,7 +110,6 @@ public class BonusRewards extends Entity {
     public void draw(Graphics2D g) {
 
         long time_passed = (System.currentTimeMillis() - time_stamp);
-        //  appear = true;
         
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {

@@ -18,7 +18,7 @@ public class RegularRewardTest {
     Maze mazeTest = new Maze();
 
 
-    //helper function to find where the worms are located 
+    //helper function to find the row of worm 
     public int findReward_row(char[][] arr, int row, int col, char string){
         int row_ind = 0;
         for(int i=0 ; i< row; i++){
@@ -31,6 +31,7 @@ public class RegularRewardTest {
         return row_ind;
     }
 
+    //helper function to find the col of worm 
     public int findReward_col(char[][] arr, int row, int col, char string){
         int col_ind = 0;
         for(int i=0 ; i< row; i++){
