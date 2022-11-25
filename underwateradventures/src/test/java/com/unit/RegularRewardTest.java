@@ -53,12 +53,8 @@ public class RegularRewardTest {
         keyTest.setKeys();
         int key_row = findReward_row(Maze.mapGrid, 16, 25, 'K');
         int key_col = findReward_col(Maze.mapGrid, 16, 25, 'K');
-        turtleTest = new Turtle(key_row, key_col);
         
-
-        // assertEquals(keyTest.getKeysCollected(), 0);
-        // assertEquals(turtleTest.getScore(), 0);
-        assertEquals(keyTest.getKeysCollected(), 1);
+        assertEquals(Maze.mapGrid[key_row][key_col], 'K');
 
     }
 }
