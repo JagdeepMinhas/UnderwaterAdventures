@@ -19,13 +19,18 @@ public class SquidController extends Entity {
     Squid tempSquid;
     //constructor for squidController
     public SquidController(){
-        addSquid(new Squid(200,200));
+        addSquid(new Squid(160,200));
         addSquid(new Squid(800,480));
     }
     //method to add squid to list for maintaining number of squid objects 
     
     void addSquid(Squid squid){
         squidList.add(squid);
+    }
+
+    public void squidRestart(){
+        Maze.mapGrid[4][5] = 'Q';
+        Maze.mapGrid[20][12] = 'Q';
     }
 
     //method to draw all squid objects

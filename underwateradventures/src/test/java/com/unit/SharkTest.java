@@ -20,16 +20,17 @@ public class SharkTest {
     //Test if turtle and shark bounds are equal, and if bounds are equal gameState becomes gameOverState
     @Test
     public void testSharkInteract() throws IOException {
-        GameBoard gameTest = new GameBoard();
+        GameboardTest nu  = new GameboardTest();
+        GameBoard sharedTestBoard = nu.gbTest();
         
         turtleTest = new Turtle(40,40);
         sharkTest = new Shark(40,40);
 
         if (turtleTest.getBounds().intersects(sharkTest.getBounds())){
-            gameTest.gameState = gameTest.gameOverState;
+            sharedTestBoard.gameState = sharedTestBoard.gameOverState;
         }
         assertEquals(turtleTest.getBounds(), sharkTest.getBounds());
-        assertEquals(gameTest.gameState, gameTest.gameOverState);
+       assertEquals(sharedTestBoard.gameState, sharedTestBoard.gameOverState);
     }
 
     //Test Constructor for Shark and SharkController

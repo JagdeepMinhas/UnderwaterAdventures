@@ -155,8 +155,10 @@ public class GameBoard extends JPanel implements ActionListener {
     turtle.resetScore();
     Maze.mapGrid[1][22] = 'E';
     Maze.mapGrid[1][23] = 'E';
+    keys.keyCleanUp();
     worms.setWorms();
     keys.setKeys();
+    squid.squidRestart();
   }
 
   // method for gameloop updates
