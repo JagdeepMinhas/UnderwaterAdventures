@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.awt.*;
 import com.Entity.Maze;
 import com.Entity.Scubadiver;
+import com.Entity.ScubaController;
 import com.Entity.Turtle;
 
 
@@ -110,6 +111,26 @@ public class ScubaTest {
         //the scuba should not have moved down because B represents barrier and scuba does not go through barriers
         assertNotEquals(520, scubaTest.getyPosition());
 
+    }
+
+    @Test
+    public void testSetScubaController(){
+        ScubaController scubaContTest = new ScubaController();
+        Scubadiver scuba1 = ScubaController.a.get(0);
+
+        assertEquals(scuba1.getxPosition(), 980);
+        assertEquals(scuba1.getyPosition(), 80);
+
+    }
+
+    @Test public void testAddScubaToList(){
+        ScubaController scubaContTest = new ScubaController();
+        Scubadiver scuba3 = new Scubadiver(120, 120);
+        scubaContTest.addScuba(scuba3);
+
+        Scubadiver checkScuba = ScubaController.a.get(1);
+        assertEquals(checkScuba.getxPosition(), 120);
+        assertEquals(checkScuba.getyPosition(), 120);
     }
 
 }

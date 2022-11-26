@@ -61,8 +61,8 @@ public class GameBoard extends JPanel implements ActionListener {
   KeyHandler key = new KeyHandler(this);
 
   // Objects
-  SharkController s;
-  ScubaController sc;
+  public SharkController s;
+  public ScubaController sc;
   private RegualrRewards keys;
   private BonusRewards worms;
   public Turtle turtle = new Turtle(this);

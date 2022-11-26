@@ -14,7 +14,7 @@ import java.util.LinkedList;
 */
 
 public class ScubaController extends Entity {
-    static LinkedList<Scubadiver> a = new LinkedList<Scubadiver>();
+    public static LinkedList<Scubadiver> a = new LinkedList<Scubadiver>();
 
     Scubadiver TempScuba;
     
