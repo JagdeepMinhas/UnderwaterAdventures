@@ -67,7 +67,7 @@ public class GameBoard extends JPanel implements ActionListener {
   private BonusRewards worms;
   public Turtle turtle = new Turtle(this);
   Maze gameMaze;
-  SquidController squid;
+  public SquidController squid;
 
   // GameBoard constructor
 

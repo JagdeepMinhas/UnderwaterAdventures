@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import com.Entity.*;
 
-public class SquidTest {
+public class SquidUnitTest {
     @Test 
     public void testSetSquid()
     {
@@ -57,7 +57,6 @@ public class SquidTest {
         squidContTest.squidTouched(true,squid3.getyPosition());
 
         assertEquals(true, squid3.touched);
-
     }
 
 }
