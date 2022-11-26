@@ -14,7 +14,7 @@ import java.awt.Graphics2D;
 */
 
 public class SquidController extends Entity {
-    ArrayList<Squid> squidList = new ArrayList <Squid>();
+    public ArrayList<Squid> squidList = new ArrayList <Squid>();
 
     Squid tempSquid;
     //constructor for squidController
@@ -24,7 +24,7 @@ public class SquidController extends Entity {
     }
     //method to add squid to list for maintaining number of squid objects 
     
-    void addSquid(Squid squid){
+    public void addSquid(Squid squid){
         squidList.add(squid);
     }
 

@@ -36,7 +36,7 @@ public class Squid extends Entity {
     }
 
     // method to change touched attribute for Squid
-    void setTouched(boolean value){
+    public void setTouched(boolean value){
         this.touched = value;
     }
 
