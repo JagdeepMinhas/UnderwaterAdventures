@@ -96,5 +96,21 @@ public class ScubaTest {
         assertNotEquals(520, scubaTest.getyPosition());
     }
 
+    @Test
+    public void testScubaMazeInteract(){
+        Maze.mapGrid[1][13] = 'B';
+        Maze.mapGrid[2][13] = 'B';
+        Maze.mapGrid[3][13] = 'B';
+        
+        Scubadiver scubaTest = new Scubadiver(40, 480);
+        Turtle turtleTest = new Turtle(40,560);
+
+        scubaTest.update(turtleTest, maze);
+
+        //the scuba should not have moved down because B represents barrier and scuba does not go through barriers
+        assertNotEquals(520, scubaTest.getyPosition());
+
+    }
+
 }
 
