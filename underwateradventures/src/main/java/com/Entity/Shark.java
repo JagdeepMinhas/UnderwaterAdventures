@@ -42,6 +42,12 @@ public class Shark extends Entity {
         this.setxPosition(x);
         this.setyPosition(y);
     }
+
+    // returns speed of Shark object
+    public int getSpeed(){
+        return this.speed;
+    }
+
     
     // method for updating shark movement
     public void update(){

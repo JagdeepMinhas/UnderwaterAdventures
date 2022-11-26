@@ -51,5 +51,22 @@ public class SharkTest {
         assertEquals(sharkTest.getBounds(), rec);
 
     }
+
+    @Test
+    public void testSharkSpeed(){
+        sharkTest = new Shark(720, 40);
+        sharkTest.update();
+
+        // If xPosition of Shark is > 680, speed = -40. In this case, xPosition is 720 which is bigger than 680 so speed should be -40.
+        assertEquals(sharkTest.getSpeed(), -40);
+
+        sharkTest = new Shark(320, 40);
+        sharkTest.update();
+
+        // If xPosition of Shark is < 400, speed = 40. In this case, xPosition is 320 which is smaller than 400 so speed should be 40.
+        assertEquals(sharkTest.getSpeed(), 40);
+    }
+
+
 }
 
