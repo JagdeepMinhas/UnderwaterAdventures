@@ -11,7 +11,7 @@ public class SquidUnitTest {
         Squid squidTest = new Squid(40,40);
         assertEquals(squidTest.getxPosition(), 40);
         assertEquals(squidTest.getyPosition(), 40);
-        
+        assertNotEquals(null, squidTest);
     }
 
     @Test

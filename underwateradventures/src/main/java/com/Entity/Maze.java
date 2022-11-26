@@ -30,8 +30,8 @@ public class Maze extends Entity  {
     int tempX;
     int tempY;
     //integers based on current MapGrid
-    static int maxRow =16;
-    static int maxCol = 25;
+    public static int maxRow =16;
+    public static int maxCol = 25;
     //public char [][] mapGrid = new char [maxRow][maxCol];
     public  static char [][] mapGrid = {
         {'B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B','B'},
