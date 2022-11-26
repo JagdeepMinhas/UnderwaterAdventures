@@ -2,7 +2,6 @@ package com.unit;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import java.awt.*;
-
 import com.Entity.Maze;
 import com.Entity.Scubadiver;
 import com.Entity.Turtle;
@@ -13,6 +12,7 @@ import com.Entity.Turtle;
 public class ScubaTest {
     
     Maze maze = new Maze();
+    
     
     
     //Constructor for Scubadiver and ScubaController
@@ -80,5 +80,37 @@ public class ScubaTest {
         //          Next expected position: 40 + 20.
         assertEquals(scubaTest.getxPosition(), 60);
     }
+
+    @Test
+    public void testScubaSharkBoundInteract(){
+        Maze.mapGrid[1][13] = 'H';
+        Maze.mapGrid[2][13] = 'H';
+        Maze.mapGrid[3][13] = 'H';
+        
+        Scubadiver scubaTest = new Scubadiver(40, 480);
+        Turtle turtleTest = new Turtle(40,560);
+
+        scubaTest.update(turtleTest, maze);
+
+        //the scuba should not have moved down because H represents the Sharks path and scuba does not go through Sharks path
+        assertNotEquals(520, scubaTest.getyPosition());
+    }
+
+    @Test
+    public void testScubaMazeInteract(){
+        Maze.mapGrid[1][13] = 'B';
+        Maze.mapGrid[2][13] = 'B';
+        Maze.mapGrid[3][13] = 'B';
+        
+        Scubadiver scubaTest = new Scubadiver(40, 480);
+        Turtle turtleTest = new Turtle(40,560);
+
+        scubaTest.update(turtleTest, maze);
+
+        //the scuba should not have moved down because B represents barrier and scuba does not go through barriers
+        assertNotEquals(520, scubaTest.getyPosition());
+
+    }
+
 }
 
