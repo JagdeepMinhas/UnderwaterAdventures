@@ -14,7 +14,7 @@ import java.util.LinkedList;
 */
 
 public class SharkController {
-    static LinkedList<Shark> e = new LinkedList<Shark>();
+    public static LinkedList<Shark> e = new LinkedList<Shark>();
 
     Shark TempShark;
     

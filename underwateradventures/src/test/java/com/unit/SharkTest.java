@@ -40,6 +40,30 @@ public class SharkTest {
         assertEquals(sharkTest.getxPosition(), 40);
         assertEquals(sharkTest.getyPosition(), 40);
     }
+
+    @Test
+    public void testSetSharkController(){
+        SharkController sharkContTest = new SharkController();
+        Shark shark1 = SharkController.e.get(0);
+        Shark shark2 = SharkController.e.get(1);
+
+        assertEquals(shark1.getxPosition(), 40);
+        assertEquals(shark1.getyPosition(), 40);
+
+        assertEquals(shark2.getxPosition(), 220);
+        assertEquals(shark2.getyPosition(), 560);
+    }
+
+    @Test
+    public void testAddSharkToList(){
+        SharkController sharkContTest = new SharkController();
+        Shark shark3 = new Shark(80,80);
+        sharkContTest.addShark(shark3);
+
+        Shark checkShark = SharkController.e.get(2);
+        assertEquals(checkShark.getxPosition(), 80);
+        assertEquals(checkShark.getyPosition(), 80);
+    }
     
     //Test getBounds()
     @Test 
