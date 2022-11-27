@@ -24,7 +24,6 @@ public class MazeTest {
         assertEquals('E', testMaze.mapGrid[0][0]);
     }
 
- 
 
 
 }
