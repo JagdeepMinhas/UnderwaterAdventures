@@ -53,17 +53,6 @@ public class SharkTest {
         assertEquals(shark2.getxPosition(), 220);
         assertEquals(shark2.getyPosition(), 560);
     }
-
-    @Test
-    public void testAddSharkToList(){
-        SharkController sharkContTest = new SharkController();
-        Shark shark3 = new Shark(80,80);
-        sharkContTest.addShark(shark3);
-
-        Shark checkShark = SharkController.e.get(2);
-        assertEquals(checkShark.getxPosition(), 80);
-        assertEquals(checkShark.getyPosition(), 80);
-    }
     
     //Test getBounds()
     @Test 

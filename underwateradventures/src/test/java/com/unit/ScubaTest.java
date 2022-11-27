@@ -123,15 +123,5 @@ public class ScubaTest {
 
     }
 
-    @Test public void testAddScubaToList(){
-        ScubaController scubaContTest = new ScubaController();
-        Scubadiver scuba3 = new Scubadiver(120, 120);
-        scubaContTest.addScuba(scuba3);
-
-        Scubadiver checkScuba = ScubaController.a.get(1);
-        assertEquals(checkScuba.getxPosition(), 120);
-        assertEquals(checkScuba.getyPosition(), 120);
-    }
-
 }
 
