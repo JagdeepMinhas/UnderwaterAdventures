@@ -63,7 +63,7 @@ public void setKeysCollected(int keysCollected) {
     //method for drawing keys
     public void drawKeys(Graphics2D g) {
 
-        g.drawImage(keyImg, tempX, tempY, 40, 40, null);
+        g.drawImage(keyImg, tempX, tempY, entitySize, entitySize, null);
     }
 
     //method for setting keys on random Empty cells
@@ -100,8 +100,8 @@ public void setKeysCollected(int keysCollected) {
         for (int i = 0; i < gridRow; i++) {
             for (int j = 0; j < gridCol; j++) {
                 if(Maze.mapGrid[i][j]  =='K' ){
-                    tempX = j * 40;
-                    tempY = i * 40;
+                    tempX = j * entitySize;
+                    tempY = i * entitySize;
                     drawKeys(g);
 
                 }

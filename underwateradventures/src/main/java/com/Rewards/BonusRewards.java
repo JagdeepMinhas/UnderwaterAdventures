@@ -54,13 +54,38 @@ public class BonusRewards extends Entity {
 
     //method for drawing worms 
     public void drawWorms(Graphics2D g) {
-        g.drawImage(worImage, tempX, tempY, 40, 40, null);
+        for (int i = 0; i < gridRow; i++) {
+            for (int j = 0; j < gridCol; j++) {
+                if(Maze.mapGrid[i][j] =='W' ){
+                    tempX = j * entitySize;
+                    tempY = i * entitySize;
+                    g.drawImage(worImage, tempX, tempY, entitySize, entitySize, null);
+                }
+            }
+        }
     }
 
     //method for drawing shrimps
     public void drawShrimps(Graphics2D g) {
-       
-        g.drawImage(shrimpImg, tempX, tempY, 40, 40, null);
+        long time_passed = (System.currentTimeMillis() - time_stamp);
+        
+        for (int i = 0; i < gridRow; i++) {
+            for (int j = 0; j < gridCol; j++) {
+                if ( (start < time_passed && time_passed < end )) {
+                    appear = true;
+                    if(Maze.mapGrid[i][j]  == 'X' ){
+                        tempX = j * entitySize;
+                        tempY = i * entitySize;
+
+                        g.drawImage(shrimpImg, tempX, tempY,entitySize, entitySize, null);
+                    }
+                }
+                else if (time_passed >= end) {
+                    time_stamp = (System.currentTimeMillis());
+                    appear = false;
+                }
+            }
+        }
     }
 
     //method for setting worms on random Empty cells
@@ -76,7 +101,6 @@ public class BonusRewards extends Entity {
                 i++;
             }
         }
-
 
     }
 
@@ -104,41 +128,5 @@ public class BonusRewards extends Entity {
         }
         return true;
     }
-    
-
-    //Method that draws Bonus Rewards on jframe (handles logic)
-    public void draw(Graphics2D g) {
-
-        long time_passed = (System.currentTimeMillis() - time_stamp);
-        
-        for (int i = 0; i < gridRow; i++) {
-            for (int j = 0; j < gridCol; j++) {
-                if(Maze.mapGrid[i][j] =='W' ){
-                    tempX = j * 40;
-                    tempY = i * 40;
-
-                    drawWorms(g);
-
-                }
-
-                
-
-                if ( (start < time_passed && time_passed < end )) {
-                    appear = true;
-                    if(Maze.mapGrid[i][j]  == 'X' ){
-                        tempX = j * 40;
-                        tempY = i * 40;
-                        // maze.draw(g);
-                        drawShrimps(g);
-                    }
-                }
-                else if (time_passed >= end) {
-                    time_stamp = (System.currentTimeMillis());
-                    appear = false;
-                }
-            }
-        }
-    }
-}
-
+}   
 

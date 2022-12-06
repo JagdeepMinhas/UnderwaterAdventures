@@ -58,37 +58,34 @@ public class GameBoard extends JPanel implements ActionListener {
   public final int gameWinState = 3;
 
   public UI ui = new UI(this);
-  KeyHandler key = new KeyHandler(this);
+  KeyHandler keyObject = new KeyHandler(this);
 
   // Objects
   public SharkController s;
   public ScubaController sc;
   private RegualrRewards keys;
-  private BonusRewards worms;
+  private BonusRewards bonusRewards; // bad confusing variable names 
   public Turtle turtle = new Turtle(this);
   Maze gameMaze;
   public SquidController squid;
+
+
 
   // GameBoard constructor
 
   public GameBoard() throws IOException {
     Dimension boardDim = new Dimension(screenWidth, screenHeight);
     this.setPreferredSize(boardDim);
-    this.addKeyListener(key);
+    this.addKeyListener(keyObject);
     this.setFocusable(true);
     gameTimer = new Timer(10, this);
     gameTimer.start();
     s = new SharkController();
     sc = new ScubaController();
     keys = new RegualrRewards();
-    worms = new BonusRewards();
+    bonusRewards = new BonusRewards();
     gameMaze = new Maze();
     squid = new SquidController();
-  }
-
-  // method for setting up the game
-  public void setupGame() {
-    gameState = titleState;
   }
 
   // Paint componenet method
@@ -139,7 +136,9 @@ public class GameBoard extends JPanel implements ActionListener {
       sc.draw(g2); // Scuba
       gameMaze.draw(g2);
       keys.draw(g2);
-      worms.draw(g2);
+      // bonusRewards.draw(g2);
+      bonusRewards.drawShrimps(g2);
+      bonusRewards.drawWorms(g2);
       squid.draw(g2);
       squid.update(g2);
       g2.dispose();
@@ -156,7 +155,7 @@ public class GameBoard extends JPanel implements ActionListener {
     Maze.mapGrid[1][22] = 'E';
     Maze.mapGrid[1][23] = 'E';
     keys.keyCleanUp();
-    worms.setWorms();
+    bonusRewards.setWorms();
     keys.setKeys();
     squid.squidRestart();
   }
@@ -171,7 +170,6 @@ public class GameBoard extends JPanel implements ActionListener {
     repaint();
   }
 
-  // method for turtle movement
   public void moveTurtle() {
 
     final int min = 0;
@@ -179,7 +177,7 @@ public class GameBoard extends JPanel implements ActionListener {
     final int horizMax = 25;
     final int vertMax = 16;
 
-    if (key.upPressed == true) {
+    if (keyObject.upPressed == true) {
       int nextVertPos = turtle.getyPosition() / 40 - 1;
       int nextHorizPos = turtle.getxPosition() / 40;
       int vertPos = turtle.getyPosition() / 40;
@@ -229,7 +227,7 @@ public class GameBoard extends JPanel implements ActionListener {
 
     }
 
-    if (key.downPressed == true) {
+    if (keyObject.downPressed == true) {
 
       int nextVertPos = turtle.getyPosition() / 40 + 1;
       int nextHorizPos = turtle.getxPosition() / 40;
@@ -274,7 +272,7 @@ public class GameBoard extends JPanel implements ActionListener {
       }
     }
 
-    if (key.leftPressed == true) {
+    if (keyObject.leftPressed == true) {
 
       int nextVertPos = turtle.getyPosition() / 40;
       int nextHorizPos = turtle.getxPosition() / 40 - 1;
@@ -320,7 +318,7 @@ public class GameBoard extends JPanel implements ActionListener {
       }
     }
 
-    if (key.rightPressed == true) {
+    if (keyObject.rightPressed == true) {
       int nextVertPos = turtle.getyPosition() / 40;
       int nextHorizPos = turtle.getxPosition() / 40 + 1;
       int vertPos = turtle.getyPosition() / 40;
@@ -364,6 +362,7 @@ public class GameBoard extends JPanel implements ActionListener {
       }
     }
   }
+
   public void updateMapGrid(int nextVertPos, int nextHorizPos, int vertPos, int horizPos) {
 
     Maze.mapGrid[nextVertPos][nextHorizPos] = 'T';
@@ -376,7 +375,7 @@ public class GameBoard extends JPanel implements ActionListener {
   }
 
   public void encounteredShrimp() {
-    if(worms.shrimp_appear()){
+    if(bonusRewards.shrimp_appear() == true){
       int tempScore = turtle.getScore() + 20;
       turtle.setScore(tempScore);
     }
