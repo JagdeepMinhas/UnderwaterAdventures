@@ -21,20 +21,9 @@ import java.awt.image.BufferedImage;
 
 public class Shark extends Entity {
 
-    int speed = entitySize; //shark  moves at most 40 px with every move
-    final static int LEFT = 0;
-    final static int RIGHT = 1;
-    final int min = 0;
-    final int horizMax = 25;
+    
     
     ArrayList < Integer > movesList = new ArrayList < Integer > ();
-    
-    // constructor for Shark class
-    public Shark(){
-        super();
-        this.setxPosition(40);
-        this.setyPosition(80);
-    }
 
     // constructor for Shark class, parameters for setting position
     public Shark(int x, int y){

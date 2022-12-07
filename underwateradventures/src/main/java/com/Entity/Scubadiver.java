@@ -32,13 +32,6 @@ public class Scubadiver extends Entity  {
     final int vertMax = 16;
 
     ArrayList < Integer > movesList = new ArrayList < Integer > ();
-    
-    //constructor for Scubadiver class
-    public Scubadiver(){
-        super();
-        this.setxPosition(200);
-        this.setyPosition(200);
-    }
 
     // constructor for Scuba class, parameters for setting position
     public Scubadiver(int x, int y){

@@ -22,7 +22,6 @@ public class Turtle extends Entity  {
 
     private int score;
 
-    int speed= entitySize; // turtle will move at most 4opx with every move
     
     private LinkedList<Shark> e = SharkController.getSharkBounds();
     private LinkedList<Scubadiver> a = ScubaController.getScubaBounds();

@@ -16,6 +16,8 @@ public abstract class Entity {
     final int screenHeight = maxRow * entitySize;
     private  int xPosition;       
     private int yPosition;
+    int speed = entitySize;
+    
 
     // getter to return yPosition attribute of any entity 
     public int getyPosition() {
